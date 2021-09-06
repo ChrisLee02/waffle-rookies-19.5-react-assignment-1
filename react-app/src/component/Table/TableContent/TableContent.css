@@ -1,0 +1,33 @@
+.TableContent {
+    height: 73px;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 2fr 1fr 5fr;
+    background-color: #F8F8F8;
+}
+
+.Name {
+    font-size: 20px;
+    margin-top: 25px;
+    height: 23px;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    /* identical to box height */
+
+    text-align: center;
+}
+
+.Grade {
+    font-size: 20px;
+    margin-top: 25px;
+    height: 23px;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    /* identical to box height */
+
+    text-align: center;
+}

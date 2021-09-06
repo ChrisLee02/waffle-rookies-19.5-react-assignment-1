@@ -1,10 +1,10 @@
-import './TableContent.css'
+import './TableHeader.css'
 
 const TableHeader = () => {
     return (
         <div className={'TableHeader'}>
-            <div className={'Text'} id={'Name'}>이름</div>
-            <div className={'Text'} id={'Grade'}>학년</div>
+            <div className={'HName'}>이름</div>
+            <div className={'HGrade'}>학년</div>
         </div>
 
     )

@@ -6,11 +6,8 @@
     background-color: #ECECEC;
 }
 
-.TableContent {
 
-}
-
-.Text {
+.HName {
     font-size: 20px;
     margin-top: 15px;
     height: 23px;
@@ -23,3 +20,15 @@
     text-align: center;
 }
 
+.HGrade {
+    font-size: 20px;
+    margin-top: 15px;
+    height: 23px;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    /* identical to box height */
+
+    text-align: center;
+}

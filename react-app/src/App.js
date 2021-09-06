@@ -10,7 +10,9 @@ import DetailNotSelected from "./component/Detail/DetailNotSelected";
 
 
 function App() {
-    let tmp = 'Detail';
+    let tmp = 'Detal';
+
+
     return (
         <div className={'App'}>
             <Header></Header>
