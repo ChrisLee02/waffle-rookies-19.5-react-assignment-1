@@ -1,0 +1,25 @@
+.TableHeader {
+    height: 59px;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 2fr 1fr 5fr;
+    background-color: #ECECEC;
+}
+
+.TableContent {
+
+}
+
+.Text {
+    font-size: 20px;
+    margin-top: 15px;
+    height: 23px;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    /* identical to box height */
+
+    text-align: center;
+}
+

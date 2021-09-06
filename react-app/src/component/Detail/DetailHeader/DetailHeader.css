@@ -1,0 +1,23 @@
+.DetailHeader {
+    padding-top: 11px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 100px;
+    height: 40px;
+
+}
+
+#Save {
+    background: #ECFFEB;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
+
+#Delete {
+    background: #FDE4E4;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
