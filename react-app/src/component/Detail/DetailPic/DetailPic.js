@@ -1,10 +1,10 @@
 import './DetailPic.css'
 
-const DetailPic = () => {
+const DetailPic = (props) => {
     return (
         <div className={'DetailPic'}>
-            <img src={'https://github.githubassets.com/images/modules/logos_page/Octocat.png'} alt='이미지를 불러올 수 없습니다'
-            width = {'200px'} height={'200px'} />
+            <img src={props.nowstuData.profileImg} alt='이미지를 불러올 수 없습니다'
+            width = {'100%'} height={'100%'} />
         </div>
     )
 }

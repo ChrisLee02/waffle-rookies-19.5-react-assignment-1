@@ -1,16 +1,16 @@
 import './DetailContent.css'
 
-const DetailContent = () => {
+const DetailContent = (props) => {
     return (
         <ul className={'DetailContent'}>
             <li className={'Line'} id={'Name'}>
-                이름 <input className={'DetailInput'} type={'Text'}  value='이와플'/>
+                이름 <input className={'DetailInput'} type={'Text'}  value={props.nowstuData.name}/>
             </li>
             <li className={'Line'} id={'Grade'}>
-                학년 <input className={'DetailInput'} type={'Text'} value='3'/>
+                학년 <input className={'DetailInput'} type={'Text'} value={props.nowstuData.grade}/>
             </li>
             <li className={'Line'} id={'Profile'}>
-                프로필 <input className={'DetailInput'} type={'Text'} value='https://github.githubassets.com/images/modules/logos_page/Octocat.png'/>
+                프로필 <input className={'DetailInput'} type={'Text'} value={props.nowstuData.profileImg}/>
             </li>
         </ul>
     )

@@ -1,9 +1,34 @@
-.TableContent {
+
+.TableContent1 {
     height: 73px;
     border-bottom: 1px solid black;
     display: grid;
-    grid-template-columns: 2fr 1fr 5fr;
+    grid-template-columns: 2fr 1fr 5fr 1fr;
     background-color: #F8F8F8;
+}
+
+.TableContent2 {
+    height: 73px;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 2fr 1fr 5fr 1fr;
+    background-color: #C4C4C4;
+}
+
+
+
+.TableContent1:hover > #Arrow1 {
+    display: block;
+}
+.TableContent2:hover > #Arrow1 {
+    display: block;
+}
+
+#Arrow1:hover{
+    background-color: darkgrey;
+}
+#Arrow2:hover{
+    background-color: darkgrey;
 }
 
 .Name {
@@ -30,4 +55,20 @@
     /* identical to box height */
 
     text-align: center;
+}
+
+#Arrow1 {
+    border: none;
+    background-color: #C4C4C4;
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    display: none;
+}
+#Arrow2 {
+    border: none;
+    background-color: #C4C4C4;
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
 }

@@ -1,11 +1,11 @@
 import './ControlBar.css'
 
-const ControlBar = () => {
+const ControlBar = (props) => {
 
     return (
         <div className={'ControlBar'}>
             <input placeholder={'검색'} type={'text'}/>
-            <button>추가</button>
+            <button onClick={props.raiseModal}>추가</button>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-const dummyData = [
+export const dummyData = [
     {
         id: 1,
         name: '깃허브',
@@ -42,3 +42,10 @@ const dummyData = [
         profileImg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png',
     },
 ];
+
+export class stuData{
+    constructor(dummyData) {
+        this.Data = dummyData;
+    }
+}
+

@@ -2,7 +2,7 @@
     height: 59px;
     border-bottom: 1px solid black;
     display: grid;
-    grid-template-columns: 2fr 1fr 5fr;
+    grid-template-columns: 2fr 1fr 5fr 1fr;
     background-color: #ECECEC;
 }
 
