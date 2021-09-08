@@ -55,8 +55,21 @@ const Modal = (props) => {
                                 }
 
                             } else if (name === 3 && korean.test(name[0]) && korean.test(name[1]) && korean.test(name[2]) && (grade === 1 || grade === 2 || grade === 3)) {
-                                props.modifyStudent(props.changedData.id, props.changedData);
-                                props.modifyfilteredStudent(props.changedData.id, props.changedData);
+                                let tmp = props.stuData.filter(student => student.grade === grade);
+                                let tmp2 = tmp.filter(student => student.name === name);
+                                let tmp3 = {
+                                    id: Math.random(),
+                                    name: name,
+                                    grade: grade,
+                                    profileImg: profileImg
+                                };
+                                if(tmp2.length === 0){
+                                    props.addStudent(tmp3);
+                                    props.setfilteredData( [...props.filteredData,tmp3] );
+                                    props.closeModal();
+                                } else {
+                                    window.alert('한 학년에 동명이인이 있어요:)');
+                                }
                             } else {
                                 window.alert('이름은 한글 2~3글자, 학년은 1,2,3 중 하나로 설정할 수 있습니다.');
                             }
