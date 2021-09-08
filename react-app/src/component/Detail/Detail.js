@@ -11,7 +11,9 @@ const Detail = (props) => {
         <div className={'Detail'}>
             <DetailHeader modifyStudent={props.modifyStudent} changedData={props.changedData}></DetailHeader>
             <DetailPic nowstuData={props.nowstuData}></DetailPic>
-            <DetailContent  changedData={props.changedData}
+            <DetailContent name={props.name} grade={props.grade} profileImg={props.profileImg} setname={props.setname}
+                           setgrade={props.setgrade}
+                           setprofileImg={props.setprofileImg} changedData={props.changedData}
                            setchangedData={props.setchangedData}
                            nowstuData={props.nowstuData}></DetailContent>
         </div>

@@ -11,6 +11,9 @@ const TableContent = (props) => {
         if (props.selected === 0) {
             props.setnowstuData(props.student);
             props.setchangedData(props.student);
+            props.setname(props.student.name);
+            props.setgrade(props.student.grade);
+            props.setprofileImg(props.student.profileImg);
         } else {
             props.setnowstuData({
                 key: Math.random(),

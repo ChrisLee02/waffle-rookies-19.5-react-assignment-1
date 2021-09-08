@@ -43,6 +43,9 @@ function App() {
     const raiseModal = () => {
         return null;
     }
+    const [name, setname] = useState();
+    const [grade, setgrade] = useState();
+    const [profileImg, setprofileImg] = useState(); //텍스트 박스에 들어갈 변수
 
     return (
         <div className={'App'}>
@@ -51,12 +54,16 @@ function App() {
             <div className={'Down'}>
                 <div className={'Left'}>
                     <ControlBar raiseModal={raiseModal}></ControlBar>
-                    <Table changedData={changedData} setchangedData={setchangedData} nowstuData={nowstuData}
+                    <Table setname={setname} setgrade={setgrade}
+                           setprofileImg={setprofileImg} changedData={changedData} setchangedData={setchangedData}
+                           nowstuData={nowstuData}
                            setnowstuData={setnowstuData} stuData={stuData}></Table>
                 </div>
                 <div className={'Right'}>
                     {nowstuData.name === null ? <DetailNotSelected></DetailNotSelected> :
-                        <Detail modifyStudent={modifyStudent} changedData={changedData} setchangedData={setchangedData}
+                        <Detail name={name} grade={grade} profileImg={profileImg} setname={setname} setgrade={setgrade}
+                                setprofileImg={setprofileImg}
+                            modifyStudent={modifyStudent} changedData={changedData} setchangedData={setchangedData}
                                 stuData={stuData} nowstuData={nowstuData}></Detail>}
                 </div>
             </div>
