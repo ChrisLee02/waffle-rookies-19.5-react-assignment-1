@@ -4,7 +4,7 @@ import TableContent from './TableContent/TableContent';
 
 const Table = (props) => { // .filter(student=>{student.name.includes(props.filterKeyword)})
     const TableContents =
-         props.stuData.map((student) => {
+         props.filteredData.map((student) => {
             return (
                 student.id === props.nowstuData.id ?
                     <TableContent

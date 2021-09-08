@@ -7,6 +7,7 @@ import Detail from './component/Detail/Detail';
 import {useState} from 'react'
 import DetailNotSelected from './component/Detail/DetailNotSelected';
 import {dummyData} from './Data/DummyData';
+import ReactDOM from 'react-dom';
 
 function App() {
     /*const [Clicked, setClicked] = useState(0); 생각해보니 필요없음. 현재 클릭한 학생 데이터의
@@ -27,9 +28,13 @@ function App() {
     }); /*Detail에서 수정된 데이터 관리*/
 
     const [filteredData, setfilteredData] = useState(stuData);
-
+    const [search, setsearch] = useState('');
     const filterStudent = (filterKeyword) => {
-        setfilteredData(stuData.filter(student => student.name.includes(filterKeyword)));
+        if(filterKeyword==='') {
+            setfilteredData(stuData);
+        } else {
+            setfilteredData(stuData.filter(student => student.name.includes(filterKeyword)));
+        }
     }
 
     const addStudent = (newstuData) => {
@@ -41,8 +46,17 @@ function App() {
         setstuData(stuData.filter(student => student.id !== id));
     }
 
+    const delfilteredStudent = (id) => {
+        setfilteredData(stuData.filter(student => student.id !== id));
+    }
+
     const modifyStudent = (id, data) => {
         setstuData(stuData.map(student => student.id === id ? ({...student, ...data}) : student));
+        // id로 동일성 검증, 같다면 속성을 덮어쓰는 식으로 수정, 나머지 경우는 그대로 유지
+    }
+    const modifyfilteredStudent = (id, data) => {
+        setfilteredData(filteredData.map(student => student.id === id ? ({...student, ...data}) : student));
+
         // id로 동일성 검증, 같다면 속성을 덮어쓰는 식으로 수정, 나머지 경우는 그대로 유지
     }
 
@@ -59,7 +73,7 @@ function App() {
             <DashBoard></DashBoard>
             <div className={'Down'}>
                 <div className={'Left'}>
-                    <ControlBar filterStudent={filterStudent}
+                    <ControlBar search={search} filterStudent={filterStudent}
                                 raiseModal={raiseModal}></ControlBar>
                     <Table filteredData={filteredData} setname={setname} setgrade={setgrade}
                            setprofileImg={setprofileImg} changedData={changedData} setchangedData={setchangedData}
@@ -68,9 +82,9 @@ function App() {
                 </div>
                 <div className={'Right'}>
                     {nowstuData.name === null ? <DetailNotSelected></DetailNotSelected> :
-                        <Detail delStudent={delStudent} name={name} grade={grade} profileImg={profileImg}
-                                setname={setname} setgrade={setgrade}
-                                setprofileImg={setprofileImg}
+                        <Detail delfilteredStudent={delfilteredStudent} delStudent={delStudent} name={name} grade={grade} profileImg={profileImg}
+                                setname={setname} setgrade={setgrade} modifyfilteredStudent={modifyfilteredStudent}
+                                setprofileImg={setprofileImg} setfilteredData={setfilteredData}
                                 modifyStudent={modifyStudent} changedData={changedData} setchangedData={setchangedData}
                                 stuData={stuData} nowstuData={nowstuData} setnowstuData={setnowstuData}></Detail>}
                 </div>

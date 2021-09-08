@@ -2,11 +2,12 @@ import './ControlBar.css'
 import {useState} from 'react';
 
 const ControlBar = (props) => {
-
+    const [value, setvalue] = useState(props.search);
 
     return (
         <div className={'ControlBar'}>
-            <input onChange={e=>{
+            <input value={value} onChange={e=>{
+                setvalue(e.target.value);
                 props.filterStudent(e.target.value);
             }}
              placeholder={'검색'} type={'text'}/>
