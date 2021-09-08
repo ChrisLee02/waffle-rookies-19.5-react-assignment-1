@@ -2,8 +2,9 @@ import './Table.css'
 import TableHeader from './TableHeader/TableHeader';
 import TableContent from './TableContent/TableContent';
 
-const Table = (props) => {
-    const TableContents = props.stuData.map((student) => {
+const Table = (props) => { // .filter(student=>{student.name.includes(props.filterKeyword)})
+    const TableContents =
+         props.stuData.map((student) => {
             return (
                 student.id === props.nowstuData.id ?
                     <TableContent

@@ -25,7 +25,12 @@ function App() {
         grade: null,
         profileImg: null
     }); /*Detail에서 수정된 데이터 관리*/
-    const [filteredData, setfilteredData] = useState();
+
+    const [filteredData, setfilteredData] = useState(stuData);
+
+    const filterStudent = (filterKeyword) => {
+        setfilteredData(stuData.filter(student => student.name.includes(filterKeyword)));
+    }
 
     const addStudent = (newstuData) => {
         setstuData([...stuData, newstuData]);
@@ -54,8 +59,9 @@ function App() {
             <DashBoard></DashBoard>
             <div className={'Down'}>
                 <div className={'Left'}>
-                    <ControlBar raiseModal={raiseModal}></ControlBar>
-                    <Table setname={setname} setgrade={setgrade}
+                    <ControlBar filterStudent={filterStudent}
+                                raiseModal={raiseModal}></ControlBar>
+                    <Table filteredData={filteredData} setname={setname} setgrade={setgrade}
                            setprofileImg={setprofileImg} changedData={changedData} setchangedData={setchangedData}
                            nowstuData={nowstuData}
                            setnowstuData={setnowstuData} stuData={stuData}></Table>
