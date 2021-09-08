@@ -7,7 +7,7 @@ import Detail from './component/Detail/Detail';
 import {useState} from 'react'
 import DetailNotSelected from './component/Detail/DetailNotSelected';
 import {dummyData} from './Data/DummyData';
-import ReactDOM from 'react-dom';
+import Modal from './component/Modal/Modal';
 
 function App() {
     /*const [Clicked, setClicked] = useState(0); 생각해보니 필요없음. 현재 클릭한 학생 데이터의
@@ -15,13 +15,13 @@ function App() {
 
     const [stuData, setstuData] = useState(dummyData); /*더미 데이터로 학생 데이터 초기화*/
     const [nowstuData, setnowstuData] = useState({
-        key: Math.random(),
+        id: Math.random(),
         name: null,
         grade: null,
         profileImg: null
     }); /*현재 클릭한 학생의 데이터를 받아오는 변수*/
     const [changedData, setchangedData] = useState({
-        key: Math.random(),
+        id: Math.random(),
         name: null,
         grade: null,
         profileImg: null
@@ -30,7 +30,7 @@ function App() {
     const [filteredData, setfilteredData] = useState(stuData);
     const [search, setsearch] = useState('');
     const filterStudent = (filterKeyword) => {
-        if(filterKeyword==='') {
+        if (filterKeyword === '') {
             setfilteredData(stuData);
         } else {
             setfilteredData(stuData.filter(student => student.name.includes(filterKeyword)));
@@ -60,21 +60,28 @@ function App() {
         // id로 동일성 검증, 같다면 속성을 덮어쓰는 식으로 수정, 나머지 경우는 그대로 유지
     }
 
-    const raiseModal = () => {
-        return null;
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
     }
+    const closeModal = () => {
+        setModalOpen(false);
+    }
+
     const [name, setname] = useState();
     const [grade, setgrade] = useState();
     const [profileImg, setprofileImg] = useState(); //텍스트 박스에 들어갈 변수
 
     return (
         <div className={'App'}>
+            <Modal filteredData={filteredData} setfilteredData={setfilteredData} stuData={stuData} addStudent={addStudent} closeModal={closeModal} modalOpen={modalOpen}></Modal>
             <Header></Header>
             <DashBoard></DashBoard>
             <div className={'Down'}>
                 <div className={'Left'}>
                     <ControlBar search={search} filterStudent={filterStudent}
-                                raiseModal={raiseModal}></ControlBar>
+                                openModal={openModal}></ControlBar>
                     <Table filteredData={filteredData} setname={setname} setgrade={setgrade}
                            setprofileImg={setprofileImg} changedData={changedData} setchangedData={setchangedData}
                            nowstuData={nowstuData}
@@ -82,7 +89,8 @@ function App() {
                 </div>
                 <div className={'Right'}>
                     {nowstuData.name === null ? <DetailNotSelected></DetailNotSelected> :
-                        <Detail delfilteredStudent={delfilteredStudent} delStudent={delStudent} name={name} grade={grade} profileImg={profileImg}
+                        <Detail delfilteredStudent={delfilteredStudent} delStudent={delStudent} name={name}
+                                grade={grade} profileImg={profileImg}
                                 setname={setname} setgrade={setgrade} modifyfilteredStudent={modifyfilteredStudent}
                                 setprofileImg={setprofileImg} setfilteredData={setfilteredData}
                                 modifyStudent={modifyStudent} changedData={changedData} setchangedData={setchangedData}

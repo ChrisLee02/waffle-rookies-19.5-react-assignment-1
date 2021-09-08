@@ -16,7 +16,7 @@ const TableContent = (props) => {
             props.setprofileImg(props.student.profileImg);
         } else {
             props.setnowstuData({
-                key: Math.random(),
+                id: Math.random(),
                 name: null,
                 grade: null,
                 profileImg: null

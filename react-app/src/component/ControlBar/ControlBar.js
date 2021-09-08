@@ -11,7 +11,7 @@ const ControlBar = (props) => {
                 props.filterStudent(e.target.value);
             }}
              placeholder={'검색'} type={'text'}/>
-            <button onClick={props.raiseModal}>추가</button>
+            <button onClick={props.openModal}>추가</button>
         </div>
     )
 }

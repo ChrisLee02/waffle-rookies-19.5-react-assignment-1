@@ -43,9 +43,4 @@ export const dummyData = [
     },
 ];
 
-export class stuData{
-    constructor(dummyData) {
-        this.Data = dummyData;
-    }
-}
 
