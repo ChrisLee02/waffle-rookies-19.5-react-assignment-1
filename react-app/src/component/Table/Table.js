@@ -5,6 +5,7 @@ import TableContent from './TableContent/TableContent';
 const Table = (props) => {
     const TableContents = props.stuData.map((student) => {
             return (
+                /*if ()*/
                 student.id === props.nowstuData.id ?
                     <TableContent
                         setname={props.setname} setgrade={props.setgrade}

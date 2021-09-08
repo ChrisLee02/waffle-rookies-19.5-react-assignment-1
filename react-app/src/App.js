@@ -61,10 +61,11 @@ function App() {
                 </div>
                 <div className={'Right'}>
                     {nowstuData.name === null ? <DetailNotSelected></DetailNotSelected> :
-                        <Detail name={name} grade={grade} profileImg={profileImg} setname={setname} setgrade={setgrade}
+                        <Detail delStudent={delStudent} name={name} grade={grade} profileImg={profileImg}
+                                setname={setname} setgrade={setgrade}
                                 setprofileImg={setprofileImg}
-                            modifyStudent={modifyStudent} changedData={changedData} setchangedData={setchangedData}
-                                stuData={stuData} nowstuData={nowstuData}></Detail>}
+                                modifyStudent={modifyStudent} changedData={changedData} setchangedData={setchangedData}
+                                stuData={stuData} nowstuData={nowstuData} setnowstuData={setnowstuData}></Detail>}
                 </div>
             </div>
 
