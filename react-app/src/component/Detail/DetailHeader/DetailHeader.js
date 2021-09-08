@@ -1,10 +1,10 @@
 import './DetailHeader.css'
 
-const DetailHeader = () => {
+const DetailHeader = (props) => {
     return (
         <div className={'DetailHeader'}>
             <button onClick={()=>{
-                window.alert('dd');
+                props.modifyStudent(props.changedData.id,props.changedData);
             }} id={'Save'}>저장</button>
             <button id={'Delete'}>삭제</button>
         </div>

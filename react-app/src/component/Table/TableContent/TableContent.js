@@ -10,33 +10,38 @@ const TableContent = (props) => {
     const handleClick = () => {
         if (props.selected === 0) {
             props.setnowstuData(props.student);
+            props.setchangedData(props.student);
         } else {
-            props.setnowstuData(null);
+            props.setnowstuData({
+                key: Math.random(),
+                name: null,
+                grade: null,
+                profileImg: null
+            });
+            props.setchangedData(null);
         }
-
     }
 
     return (
-           props.selected === 0 ?
-                <div className={'TableContent1'}>
-                    <div className={'Name'}>{props.student.name}</div>
-                    <div className={'Grade'}>{props.student.grade}</div>
-                    <div></div>
-                    {/*공백 맞추기용*/}
-                    <button onClick={handleClick} id={'Arrow1'}><img src={Arrow1} width={'33px'} height={'33px'}/></button>
-                </div> :
-                <div className={'TableContent2'}>
-                    <div className={'Name'}>{props.student.name}</div>
-                    <div className={'Grade'}>{props.student.grade}</div>
-                    <div></div>
-                    {/*공백 맞추기용*/}
-                    <button onClick={handleClick} id={'Arrow2'}><img src={Arrow2} width={'33px'} height={'33px'}/>
-                    </button>
-                </div>
+        props.selected === 0 ?
+            <div className={'TableContent1'}>
+                <div className={'Name'}>{props.student.name}</div>
+                <div className={'Grade'}>{props.student.grade}</div>
+                <div></div>
+                {/*공백 맞추기용*/}
+                <button onClick={handleClick} id={'Arrow1'}><img src={Arrow1} width={'33px'} height={'33px'}/></button>
+            </div> :
+            <div className={'TableContent2'}>
+                <div className={'Name'}>{props.student.name}</div>
+                <div className={'Grade'}>{props.student.grade}</div>
+                <div></div>
+                {/*공백 맞추기용*/}
+                <button onClick={handleClick} id={'Arrow2'}><img src={Arrow2} width={'33px'} height={'33px'}/>
+                </button>
+            </div>
     )
 
 }
-
 
 
 export default TableContent;
