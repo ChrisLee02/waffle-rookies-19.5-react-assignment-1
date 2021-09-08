@@ -1,0 +1,38 @@
+import './Table.css'
+import TableHeader from './TableHeader/TableHeader';
+import TableContent from './TableContent/TableContent';
+
+const Table = (props) => { // .filter(student=>{student.name.includes(props.filterKeyword)})
+    const TableContents =
+         props.filteredData.map((student) => {
+            return (
+                student.id === props.nowstuData.id ?
+                    <TableContent
+                        setname={props.setname} setgrade={props.setgrade}
+                        setprofileImg={props.setprofileImg} backgroundColor={'#C4C4C4'} selected={1}
+                        nowstuData={props.nowstuData}
+                        setnowstuData={props.setnowstuData} changedData={props.changedData}
+                        setchangedData={props.setchangedData}
+                        student={student}></TableContent> :
+                    <TableContent
+                        setname={props.setname} setgrade={props.setgrade}
+                        setprofileImg={props.setprofileImg} backgroundColor={'#F8F8F8'} selected={0}
+                        nowstuData={props.nowstuData}
+                        setnowstuData={props.setnowstuData} changedData={props.changedData}
+                        setchangedData={props.setchangedData}
+                        student={student}></TableContent>
+            )
+        }
+    );
+
+
+    return (
+        <div className={'Table'}>
+            <TableHeader></TableHeader>
+            {TableContents}
+        </div>
+    )
+}
+
+
+export default Table

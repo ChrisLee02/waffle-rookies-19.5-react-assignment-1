@@ -1,0 +1,11 @@
+.DetailPic {
+    width: 250px;
+    height: 250px;
+    margin-top: 50px;
+    border-radius: 70%;
+    border: 1px black solid;
+    margin-left: calc(50% - 125px);
+    overflow: hidden;
+    line-height: 150px;
+    font-size: 25px;
+}
