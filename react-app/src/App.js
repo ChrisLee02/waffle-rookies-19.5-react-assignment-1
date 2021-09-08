@@ -25,6 +25,7 @@ function App() {
         grade: null,
         profileImg: null
     }); /*Detail에서 수정된 데이터 관리*/
+    const [filteredData, setfilteredData] = useState();
 
     const addStudent = (newstuData) => {
         setstuData([...stuData, newstuData]);
