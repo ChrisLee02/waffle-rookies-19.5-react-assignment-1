@@ -1,3 +1,5 @@
+
+
 .TableContent1 {
     height: 73px;
     border-bottom: 1px solid black;
@@ -15,18 +17,19 @@
 }
 
 
-
 .TableContent1:hover > #Arrow1 {
     display: block;
 }
+
 .TableContent2:hover > #Arrow1 {
     display: block;
 }
 
-#Arrow1:hover{
+#Arrow1:hover {
     background-color: darkgrey;
 }
-#Arrow2:hover{
+
+#Arrow2:hover {
     background-color: darkgrey;
 }
 
@@ -64,6 +67,7 @@
     margin-top: 10px;
     display: none;
 }
+
 #Arrow2 {
     border: none;
     background-color: #C4C4C4;
