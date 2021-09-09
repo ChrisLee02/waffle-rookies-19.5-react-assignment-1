@@ -20,7 +20,5 @@ const Detail = (props) => {
     )
 }
 
-/*name={name} grade={grade} profileImg={profileImg} setname={setname} setgrade={setgrade}
-setprofileImg={setprofileImg}*/
 
 export default Detail;

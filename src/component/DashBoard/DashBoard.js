@@ -1,7 +1,7 @@
 import './DashBoard.css'
 
 
-const DashBoard = () => {
+const DashBoard = () => { //다음 기회에
     return (
         <div className={'DashBoard'}>
             <div id={'DashBoard_Text'}>

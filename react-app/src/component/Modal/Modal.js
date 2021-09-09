@@ -54,7 +54,7 @@ const Modal = (props) => {
                                     window.alert('한 학년에 동명이인이 있어요:)');
                                 }
 
-                            } else if (name === 3 && korean.test(name[0]) && korean.test(name[1]) && korean.test(name[2]) && (grade === 1 || grade === 2 || grade === 3)) {
+                            } else if (name.length === 3 && korean.test(name[0]) && korean.test(name[1]) && korean.test(name[2]) && (Number(grade) === 1 || Number(grade) === 2 || Number(grade) === 3)) {
                                 let tmp = props.stuData.filter(student => student.grade === grade);
                                 let tmp2 = tmp.filter(student => student.name === name);
                                 let tmp3 = {
