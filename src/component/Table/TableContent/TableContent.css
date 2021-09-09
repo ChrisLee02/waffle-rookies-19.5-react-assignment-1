@@ -1,0 +1,77 @@
+
+
+.TableContent1 {
+    height: 73px;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 2fr 1fr 5fr 1fr;
+    background-color: #F8F8F8;
+}
+
+.TableContent2 {
+    height: 73px;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 2fr 1fr 5fr 1fr;
+    background-color: #C4C4C4;
+}
+
+
+.TableContent1:hover > #Arrow1 {
+    display: block;
+}
+
+.TableContent2:hover > #Arrow1 {
+    display: block;
+}
+
+#Arrow1:hover {
+    background-color: darkgrey;
+}
+
+#Arrow2:hover {
+    background-color: darkgrey;
+}
+
+.Name {
+    font-size: 20px;
+    margin-top: 25px;
+    height: 23px;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    /* identical to box height */
+
+    text-align: center;
+}
+
+.Grade {
+    font-size: 20px;
+    margin-top: 25px;
+    height: 23px;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    /* identical to box height */
+
+    text-align: center;
+}
+
+#Arrow1 {
+    border: none;
+    background-color: #C4C4C4;
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    display: none;
+}
+
+#Arrow2 {
+    border: none;
+    background-color: #C4C4C4;
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+}
