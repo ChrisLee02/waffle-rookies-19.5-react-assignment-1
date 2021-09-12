@@ -62,23 +62,23 @@ function App() {
     return (
         <div className={'App'}>
             <StudentAddModal setnowstuData={setnowstuData} stuData={stuData} addStudent={addStudent} closeModal={closeModal}
-                             modalOpen={modalOpen}></StudentAddModal>
-            <Header></Header>
-            <DashBoard></DashBoard>
+                             modalOpen={modalOpen}/>
+            <Header/>
+            <DashBoard/>
             <div className={'Down'}>
                 <div className={'Left'}>
                     <ControlBar search={search} setsearch={setsearch}
-                                openModal={openModal}></ControlBar>
+                                openModal={openModal}/>
                     <Table search={search} filterStudent={filterStudent}
                            nowstuData={nowstuData}
-                           setnowstuData={setnowstuData} stuData={stuData}></Table>
+                           setnowstuData={setnowstuData} stuData={stuData}/>
                 </div>
                 <div className={'Right'}>
-                    {nowstuData.name === null ? <DetailNotSelected></DetailNotSelected> : //현재 선택된 학생이 있는지 판단
+                    {nowstuData.name === null ? <DetailNotSelected/> : //현재 선택된 학생이 있는지 판단
                         <Detail
                             delStudent={delStudent}
                             modifyStudent={modifyStudent}
-                            stuData={stuData} nowstuData={nowstuData} setnowstuData={setnowstuData}></Detail>}
+                            stuData={stuData} nowstuData={nowstuData} setnowstuData={setnowstuData}/>}
                 </div>
                 {/*선택된 학생이 있으면 Detail 표시, 없으면 메세지창을 표시*/}
             </div>
