@@ -1,6 +1,5 @@
 import './Header.css'
-import Waffle from './Waffle.svg'
-
+import Waffle from '../../Data/Waffle.svg'
 const Header = () => {
     return (
         <header className={'Header'}>

@@ -1,0 +1,21 @@
+.Students {
+    margin-left: 43px;
+    margin-right: 43px;
+    margin-top: 34px;
+    text-align: center;
+}
+
+.Down {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.Left {
+    border-right: solid 1px black;
+    padding-right: 52px;
+}
+
+.Right {
+    padding-left: 52px;
+}

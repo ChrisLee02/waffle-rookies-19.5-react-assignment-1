@@ -1,0 +1,26 @@
+.IdButton {
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 42px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 10px;
+}
+
+.Lock {
+    background-color: #C4C4C4;
+
+}
+.Delete {
+    background-color: #FCD8D8;
+}
+.Save {
+    background-color: #D3FFDD;
+}
+
+.IDButtons {
+    display: flex;
+    justify-content: flex-end;
+}
