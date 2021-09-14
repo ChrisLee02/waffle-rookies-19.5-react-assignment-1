@@ -9,6 +9,18 @@
     padding-top: 10px;
 }
 
+.LockedIdButton {
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 42px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 10px;
+    background-color: #C4C4C4;
+}
+
 .Lock {
     background-color: #C4C4C4;
 

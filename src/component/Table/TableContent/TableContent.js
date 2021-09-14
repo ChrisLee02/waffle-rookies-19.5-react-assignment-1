@@ -5,8 +5,7 @@ import {useState} from 'react';
 import {useStudentContext} from '../../../context/Context';
 
 const TableContent = (props) => {
-    /*const [backgroundColor, tmp] = useState(props.selected === 0 ? '#F8F8F8' : '#C4C4C4');*/
-    /*클릭이 되는 순간, 해당 라인은 배경색 고정, 아이콘 변경 후 고정*/ // ==> 무시하시면 됩니다.
+
     const context = useStudentContext();
 
     const handleClick = () => {

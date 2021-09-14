@@ -3,11 +3,11 @@ import DetailHeader from './DetailHeader/DetailHeader';
 import DetailPic from './DetailPic/DetailPic';
 import DetailContent from './DetailContent/DetailContent';
 
-const Detail = () => {
+const Detail = (props) => {
 
     return (
         <div className={'Detail'}>
-            <DetailHeader/>
+            <DetailHeader history={props.history}/>
             <DetailPic/>
             <DetailContent/>
         </div>
