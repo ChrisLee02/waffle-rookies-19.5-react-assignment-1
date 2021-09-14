@@ -8,11 +8,13 @@
     margin-top: 27px;
 }
 .InfoLine {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-right: calc(50% - 120px);
     text-align: right;
     list-style-type: none;
-
+}
+#Major {
+    width: 197px;
 }
 
 .InfoInput {

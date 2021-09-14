@@ -18,11 +18,19 @@ const ProfileInfo = () => {
                     context.setNowStudentData({...context.nowStudentData, email: e.target.value});
                 }}/>
                 </li>
+
                 <li className={'InfoLine'}>
-                    전공 <input className={'InfoInput'} id={'Major'}
-                              value={context.nowStudentData.major} onChange={(e) => {
+                    전공
+                    <select className={'InfoInput'} id={'Major'} onChange={(e) => {
                     context.setNowStudentData({...context.nowStudentData, major: e.target.value});
-                }}/>
+                }} value={context.nowStudentData.major} >
+                        <option value="">전공선택</option>
+                        <option value="frontend">frontend</option>
+                        <option value="backend">backend</option>
+                        <option value="android">android</option>
+                        <option value="iOS">iOS</option>
+                        <option value="design">design</option>
+                    </select>
                 </li>
             </ul>
         </div>
