@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0343e35d.chunk.css",
+    "main.js": "/static/js/main.d5983ad8.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.039c7522.js",
+    "static/js/2.1ce196b3.chunk.js": "/static/js/2.1ce196b3.chunk.js",
+    "static/js/3.1b673fe3.chunk.js": "/static/js/3.1b673fe3.chunk.js",
+    "index.html": "/index.html",
+    "static/js/2.1ce196b3.chunk.js.LICENSE.txt": "/static/js/2.1ce196b3.chunk.js.LICENSE.txt",
+    "static/media/Arrow1.00cdcad2.svg": "/static/media/Arrow1.00cdcad2.svg",
+    "static/media/Arrow2.9b4429e1.svg": "/static/media/Arrow2.9b4429e1.svg",
+    "static/media/Delete.bc5a080a.svg": "/static/media/Delete.bc5a080a.svg",
+    "static/media/Locked.51a3f35c.svg": "/static/media/Locked.51a3f35c.svg",
+    "static/media/PageMove.b02eec7e.svg": "/static/media/PageMove.b02eec7e.svg",
+    "static/media/Save.bd3ded6d.svg": "/static/media/Save.bd3ded6d.svg",
+    "static/media/UnLocked.660df822.svg": "/static/media/UnLocked.660df822.svg",
+    "static/media/Waffle.237bc3c3.svg": "/static/media/Waffle.237bc3c3.svg",
+    "static/media/Warning.789225a4.svg": "/static/media/Warning.789225a4.svg",
+    "static/media/X.3ac220a8.svg": "/static/media/X.3ac220a8.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.039c7522.js",
+    "static/js/2.1ce196b3.chunk.js",
+    "static/css/main.0343e35d.chunk.css",
+    "static/js/main.d5983ad8.chunk.js"
+  ]
+}
