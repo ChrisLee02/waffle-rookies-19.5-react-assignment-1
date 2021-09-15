@@ -14,6 +14,7 @@ function App() {
                 <Route path='/students' component={Students} exact />
                 <Route path='/login' component={Login} exact />
                 <Route path='/students/:id' component={StudentID} exact />
+                <Redirect to='/students'/>
             </Switch>
         </BrowserRouter>
     );
