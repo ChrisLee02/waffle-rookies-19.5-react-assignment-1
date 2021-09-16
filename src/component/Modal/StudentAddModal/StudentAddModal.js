@@ -49,11 +49,6 @@ const StudentAddModal = (props) => {
                             setGrade(Number(e.target.value));
                         }} className={'ModalInput'}/>
                         </li>
-                        <li className={'ModalLine'} id={'Profile'}>
-                            프로필 <input onChange={e => {
-                            setProfileImg(e.target.value);
-                        }} className={'ModalInput'}/>
-                        </li>
                     </ul>
                     <div className={'Button'}>
                         <div></div>
