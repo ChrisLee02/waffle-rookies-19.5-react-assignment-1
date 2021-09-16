@@ -26,4 +26,8 @@
     line-height: 23px;
     margin-left: 30px;
     width: 250px;
+
+}
+#Email {
+    background-image: url("/src/Data/Email.png");
 }

@@ -36,7 +36,10 @@ export const ContextProvider = ({children}) => {
             id: Math.random(),
             name: null,
             grade: null,
-            profileImg: null
+            profileImg: null,
+            email: '',
+            phone: '',
+            major: ''
         });
     }
 

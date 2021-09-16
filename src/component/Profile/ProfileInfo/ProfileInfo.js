@@ -37,11 +37,10 @@ const ProfileInfo = () => {
                 </li>
                 <li className={'InfoLine'}>
                     이메일 <input className={'InfoInput'} id={'Email'}
-                               value={context.nowStudentData.email} onChange={(e) => {
-                    context.setNowStudentData({...context.nowStudentData, email: e.target.value});
+                                    value={context.nowStudentData.email.slice(0,-13)} onChange={(e) => {
+                    context.setNowStudentData({...context.nowStudentData, email: e.target.value+'@waffle.hs.kr'});
                 }}/>
                 </li>
-
                 <li className={'InfoLine'}>
                     전공
                     <select className={'InfoInput'} id={'Major'} onChange={(e) => {
