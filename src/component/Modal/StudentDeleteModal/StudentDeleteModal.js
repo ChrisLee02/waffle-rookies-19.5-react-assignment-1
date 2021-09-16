@@ -32,6 +32,7 @@ const StudentDeleteModal = (props) => {
                             context.delStudent();
                             props.closeModal();
                             props.history.push('/students');
+                            context.setDashBoardData(context.studentData.length === 0 ? null : [{name:'1st', value:context.percentage(1)}, {name:'2nd', value:context.percentage(2)}, {name:'3rd', value:context.percentage(3)}]);
                         }} className={'IdButton Delete'}> <img src={Delete}/>삭제</button>
 
                     </div>

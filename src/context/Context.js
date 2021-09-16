@@ -16,6 +16,7 @@ export const ContextProvider = ({children}) => {
     const [search, setSearch] = useState(''); //검색창 입력 값 받아옴
 
 
+
     const filterStudent = (filterKeyword) => { //검색어가 들어갈 때 필터링하는 함수
         if (filterKeyword === '') { //공백이면 그냥 다 출력하도록
             return studentData;
@@ -39,7 +40,7 @@ export const ContextProvider = ({children}) => {
         });
     }
 
-    const checkValidity = (Data) => {
+    const checkValidity = (Data) => { //수정 시 변경조건 체크는 과제2에선 무쓸모
         if ( /[가-힣]{2,3}/g.test(Data.name)  && ['1','2','3'].includes(Data.grade) ) { //2~3글자, 한글, 학년조건 체크
             const tmp = studentData.filter(student => student.grade === Data.grade);
             const tmp2 = tmp.filter(student => student.name === Data.name); //학년, 이름으로 필터링
@@ -72,7 +73,7 @@ export const ContextProvider = ({children}) => {
             filterStudent,
             addStudent,
             delStudent,
-            modifyStudent
+            modifyStudent,
         }}>
             {children}
         </studentContext.Provider>
