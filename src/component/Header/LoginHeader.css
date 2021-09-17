@@ -1,14 +1,10 @@
-.Header {
-    display: flex;
-    width: 80%;
-    height: 76px;
-    top: 34px;
+.LoginHeader {
+    display: grid;
+    justify-items: center;
 }
 
-#Title {
+#LoginTitle {
     height: 31px;
-    margin-left: 22px;
-
     font-family: Abel;
     font-style: normal;
     font-weight: normal;
