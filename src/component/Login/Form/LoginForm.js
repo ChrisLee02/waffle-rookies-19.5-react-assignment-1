@@ -1,6 +1,6 @@
 import './LoginForm.css'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
     return (
 
         <form className={'LoginForm'} action="" name={'IDPW'}>
@@ -8,7 +8,10 @@ const LoginForm = () => {
             <input id={'LogInID'} type="text"/>
             <label className={'LoginLabel'} htmlFor={"LogInPW"}>Password</label>
             <input id={'LogInPW'} type="text"/>
-            <button  id={'SignIn'}>Sign in</button>
+            <button onClick={() => {
+                props.history.push('/students');
+                localStorage.setItem('isLogIn', true);
+            }} id={'SignIn'}>Sign in</button> {/**/}
         </form>
 
 

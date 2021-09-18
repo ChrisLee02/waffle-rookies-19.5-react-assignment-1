@@ -10,12 +10,16 @@ export const ContextProvider = ({children}) => {
         id: null,
         name: null,
         grade: null,
-        profileImg: null
+        profileImg: null,
+        email: '',
+        phone: '',
+        major: '',
+        locked: false
     });
 
     const [search, setSearch] = useState(''); //검색창 입력 값 받아옴
 
-
+    const [isLogIn, setIsLogIn] = useState('false');
 
     const filterStudent = (filterKeyword) => { //검색어가 들어갈 때 필터링하는 함수
         if (filterKeyword === '') { //공백이면 그냥 다 출력하도록
@@ -39,7 +43,8 @@ export const ContextProvider = ({children}) => {
             profileImg: null,
             email: '',
             phone: '',
-            major: ''
+            major: '',
+            locked: false
         });
     }
 
@@ -77,6 +82,7 @@ export const ContextProvider = ({children}) => {
             addStudent,
             delStudent,
             modifyStudent,
+            isLogIn, setIsLogIn
         }}>
             {children}
         </studentContext.Provider>

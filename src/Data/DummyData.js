@@ -6,7 +6,8 @@ export const dummyData = [
         profileImg: 'https://github.githubassets.com/images/modules/logos_page/Octocat.png',
         email: '',
         phone: '',
-        major: ''
+        major: '',
+        locked: false
     },
     {
         id: 2,
@@ -15,7 +16,8 @@ export const dummyData = [
         profileImg: '',
         email: '',
         phone: '',
-        major: ''
+        major: '',
+        locked: false
     },
     {
         id: 3,
@@ -24,7 +26,8 @@ export const dummyData = [
         profileImg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2560px-React-icon.svg.png',
         email: '',
         phone: '',
-        major: ''
+        major: '',
+        locked: false
     },
     {
         id: 4,
@@ -33,7 +36,8 @@ export const dummyData = [
         profileImg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/1200px-Svelte_Logo.svg.png',
         email: '',
         phone: '',
-        major: ''
+        major: '',
+        locked: false
     },
     {
         id: 5,
@@ -42,7 +46,8 @@ export const dummyData = [
         profileImg: 'https://raw.githubusercontent.com/1ambda/1ambda.github.io/master/assets/images/redux/redux_logo.png?width=30%&height=30%',
         email: '',
         phone: '',
-        major: ''
+        major: '',
+        locked: false
     },
     {
         id: 6,
@@ -51,7 +56,8 @@ export const dummyData = [
         profileImg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png',
         email: '',
         phone: '',
-        major: ''
+        major: '',
+        locked: false
     },
     {
         id: 7,
@@ -60,7 +66,8 @@ export const dummyData = [
         profileImg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png',
         email: '',
         phone: '',
-        major: ''
+        major: '',
+        locked: false
     },
 ];
 

@@ -12,6 +12,9 @@
     list-style-type: none;
 
 }
+#Major {
+     width: 255px;
+ }
 
 .InfoInput {
     border: 1px solid #C2C2C2;

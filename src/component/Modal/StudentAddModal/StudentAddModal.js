@@ -11,14 +11,17 @@ const StudentAddModal = (props) => {
     const [profileImg, setProfileImg] = useState(); //모달의 텍스트 박스에 들어갈 변수
     const AddStudent = () => {
         const korean = /[가-힣]/; //한국어인지 검사하는 코드
-        if ( /[가-힣]{2,3}/g.test(name)  && [1, 2, 3].includes(grade)) {  //2글자이면서, 두 글자 모두 한국어면서, 학년이 1~3이면
+        if ( (name.length === 2 || name.length === 3) && /[가-힣]{2,3}/g.test(name)  && [1, 2, 3].includes(grade)) {  //2글자이면서, 두 글자 모두 한국어면서, 학년이 1~3이면
             const tmp = context.studentData.filter(student => student.grade === grade);
             const tmp2 = tmp.filter(student => student.name === name); //학년, 이름으로 필터링
             const tmp3 = { //입력한 내용의 학생 클래스
                 id: Math.random(),
                 name: name,
                 grade: grade,
-                profileImg: profileImg
+                profileImg: null,
+                email: '',
+                phone: '',
+                major: ''
             };
             if(tmp2.length === 0){ // 학년과 이름으로 필터링한 tmp2가 비어 있다면 - 한 학년에 동명이인이 없다면
                 context.addStudent(tmp3); //학생 추가

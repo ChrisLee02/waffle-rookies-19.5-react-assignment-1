@@ -11,7 +11,7 @@ const DetailHeader = (props) => {
             <div></div>
             <button onClick={() => {
                 context.setNowStudentData(context.studentData.filter(student=>student.id===context.nowStudentData.id)[0]);
-                props.history.push('/students/:id')
+                props.history.push('/students/'+context.nowStudentData.id.toString())
             }} id={'GoDetail'}><img src={image}/></button>
 
         </div>

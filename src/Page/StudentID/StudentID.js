@@ -2,7 +2,8 @@ import './StudentID.css'
 import IDHeader from '../../component/Header/IDHeader';
 import StudentAddModal from '../../component/Modal/StudentAddModal/StudentAddModal';
 import {useStudentContext} from '../../context/Context';
-import {useState} from 'react';
+import {useEffect ,useState} from 'react';
+import {useParams} from 'react-router-dom';
 import IDButtons from '../../component/Buttons/Buttons';
 import RoughProfile from '../../component/Profile/RoughProfile/RoughProfile';
 import ProfileInfo from '../../component/Profile/ProfileInfo/ProfileInfo';
@@ -24,14 +25,24 @@ const StudentID = (props) => {
     }
 
     const controlLock = () => {
-        if (isLocked) {
-            setIsLocked(false);
+        if (context.nowStudentData.locked) {
+            context.setNowStudentData({...context.nowStudentData, locked:false});
         } else {
-            setIsLocked(true);
+            context.setNowStudentData({...context.nowStudentData, locked:true});
         }
     }
+    const params = useParams()
+    const id = params.id;
+    useEffect(() => {
+        if(context.studentData.filter(student=>student.id===Number(id)).length === 0) {
+            props.history.push('/students');
+        } else {
+            context.setNowStudentData(context.studentData.filter(student=>student.id===Number(id))[0]);
+        }
+    },[params]);
 
-    const [isLocked, setIsLocked] = useState(false);
+
+
 
     return (
         <div className={'StudentID'}>
@@ -42,10 +53,10 @@ const StudentID = (props) => {
                 <div className={'IDLeft'}>
                     <RoughProfile></RoughProfile>
                     <div className={'IDTitle'}>정보</div>
-                    {isLocked ? <LockedProfileInfo></LockedProfileInfo> : <ProfileInfo></ProfileInfo>}
+                    {context.nowStudentData.locked ? <LockedProfileInfo></LockedProfileInfo> : <ProfileInfo></ProfileInfo>}
                 </div>
                 <div className={'IDRight'}>
-                    {isLocked ? <LockedButtons controlLock={controlLock}></LockedButtons> :
+                    {context.nowStudentData.locked ? <LockedButtons controlLock={controlLock}></LockedButtons> :
                         <IDButtons controlLock={controlLock} openModal={openModal}></IDButtons>}
                     <div className={'IDTitle'}>코멘트</div>
                     <Comment></Comment>
