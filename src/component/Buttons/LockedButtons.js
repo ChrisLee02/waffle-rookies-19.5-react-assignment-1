@@ -9,9 +9,9 @@ const LockedIDButtons = (props) => {
 
     return (
         <div className={'IDButtons'}>
-            <button onClick={props.controlLock} className={'LockedIdButton Unlock'}><img src={Lock}/>해제</button>
-            <button className={'LockedIdButton'}><img src={Delete}/> 삭제</button>
-            <button className={'LockedIdButton'}><img src={Save}/> 저장</button>
+            <button onClick={props.controlLock} className={'LockedIdButton'}><img src={Lock}/>해제</button>
+            <button disabled={true} className={'LockedIdButton'}><img src={Delete}/> 삭제</button>
+            <button disabled={true} className={'LockedIdButton'}><img src={Save}/> 저장</button>
         </div>
     )
 }

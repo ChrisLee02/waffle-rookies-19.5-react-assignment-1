@@ -11,10 +11,14 @@ const LockedProfileInfo = () => {
                     전화번호 <input disabled={true} className={'InfoInput'} id={'Phone'}
                                 value={context.nowStudentData.phone}/>
                 </li>
+
+
                 <li className={'InfoLine'}>
-                    이메일 <input disabled={true} className={'InfoInput'} id={'Email'}
-                               value={context.nowStudentData.email}/>
+                    이메일 <div className={'Shell'}><input className={'InfoInput'} id={'Email'} disabled={true}
+                                    value={context.nowStudentData.email}/></div>
                 </li>
+
+
                 <li className={'InfoLine'}>
                     전공
                     <select disabled={true} className={'InfoInput'} id={'Major'} onChange={(e) => {

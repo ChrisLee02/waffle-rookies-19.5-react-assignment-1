@@ -27,7 +27,22 @@
     margin-left: 30px;
     width: 250px;
 
+
 }
-#Email {
-    background-image: url("/src/Data/Email.png");
+
+.Shell {
+    display: inline-block;
+    position: relative;
+}
+
+.Shell::after {
+    content: "@waffle.hs.kr";
+    color: #979797;
+    font-family: sans-serif;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: 40%;
+    right: 90px;
+    transform: translateY(-50%);
 }

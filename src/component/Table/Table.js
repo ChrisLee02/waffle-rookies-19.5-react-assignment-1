@@ -7,15 +7,11 @@ import NoTableContents from './NoTableContents/NoTableContents';
 const Table = (props) => {
     const context = useStudentContext();
     const TableContents =
-        context.filterStudent(context.search).map((student) => {
+        context.studentData.filter(student => student.name.includes(props.search)).map((student) => {
             return (
-                student.id === context.nowStudentData.id ?
                     <TableContent // 현재 학생의 테이블 내용
-                        selected={true}
-                        student={student} key={student.id}  ></TableContent> : // selected 값을 참으로 전달
-                    <TableContent // 나머지 테이블 내용
-                        selected={false}
-                        student={student} key={student.id}></TableContent> // selected는 거짓으로 전달
+                        selected={student.id === context.nowStudentData.id}
+                        student={student} key={student.id}  ></TableContent>  // selected 값을 참으로 전달
             )
         }
     );

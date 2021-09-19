@@ -3,43 +3,21 @@ import {useStudentContext} from '../../../context/Context';
 
 const ProfileInfo = () => {
     const context = useStudentContext();
-    const setPhoneNum = (e) => { // 길이가 4, 9인 시점에서 지우는 중인지/쓰는 중인지로 2차 케이스를 나눔.
-        context.setNowStudentData({...context.nowStudentData, phone: e.target.value});
-        if (e.target.value.length === 4) {
-            if (e.target.value[3] === '-') {
-                context.setNowStudentData({...context.nowStudentData, phone: e.target.value.slice(0, 3)});
-            } else {
-                context.setNowStudentData({
-                    ...context.nowStudentData,
-                    phone: e.target.value.slice(0, 3) + '-' + e.target.value[3]
-                });
-            }
-        }
-        if (e.target.value.length === 9) {
-            if (e.target.value[8] === '-') {
-                context.setNowStudentData({...context.nowStudentData, phone: e.target.value.slice(0, 8)});
-            } else {
-                context.setNowStudentData({
-                    ...context.nowStudentData,
-                    phone: e.target.value.slice(0, 8) + '-' + e.target.value[8]
-                });
-            }
-        }
-    }
+
     return (
         <div className={'ProfileInfo'}>
             <ul className={'Infomation'}>
                 <li className={'InfoLine'}>
                     전화번호 <input className={'InfoInput'} id={'Phone'}
                                 value={context.nowStudentData.phone}
-                                onChange={setPhoneNum}
+                                onChange={(e) => {context.setPhoneNum(e)}}
                 />
                 </li>
                 <li className={'InfoLine'}>
-                    이메일 <input className={'InfoInput'} id={'Email'}
+                    이메일 <div className={'Shell'}><input className={'InfoInput'} id={'Email'}
                                     value={context.nowStudentData.email.slice(0,-13)} onChange={(e) => {
-                    context.setNowStudentData({...context.nowStudentData, email: e.target.value+'@waffle.hs.kr'});
-                }}/>
+                    context.setNowStudentData({...context.nowStudentData, email: e.target.value+'@waffle.hs.kr'})
+                }}/></div>
                 </li>
                 <li className={'InfoLine'}>
                     전공

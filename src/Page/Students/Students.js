@@ -14,7 +14,7 @@ const Students = (props) => {
     const context = useStudentContext();
 
     const [modalOpen, setModalOpen] = useState(false); // 모달은 기본값이 꺼진 상태로
-
+    const [search, setSearch] = useState(''); //검색창 입력 값 받아옴
     const openModal = () => { //제목이 곧 내용
         setModalOpen(true);
     }
@@ -30,8 +30,8 @@ const Students = (props) => {
             <DashBoard/>
             <div className={'Down'}>
                 <div className={'Left'}>
-                    <ControlBar openModal={openModal}/>
-                    <Table/>
+                    <ControlBar search={search} setSearch={setSearch} openModal={openModal}/>
+                    <Table search={search}/>
                 </div>
                 <div className={'Right'}>
                     {context.nowStudentData.name === null ? <DetailNotSelected/> : //현재 선택된 학생이 있는지 판단
