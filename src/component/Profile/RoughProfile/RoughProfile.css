@@ -1,0 +1,41 @@
+#ProfileImg {
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+    border-radius: 70%;
+    border: 1px black solid;
+    overflow: hidden;
+    line-height: 150px;
+    font-size: 25px;
+}
+.IDLine {
+    margin-left: 20px;
+    list-style-type: none;
+}
+
+.IDInput {
+    background:none;
+    border: none;
+    color: #9C9C9C;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.RoughProfile {
+    margin-left: 50px;
+    display: flex;
+}
+
+#IDName {
+    margin-top: 90px;
+    margin-left: 10px;
+
+}
+
+#IDGrade {
+    margin-top: 30px;
+    margin-left: 10px;
+}

@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {StudentContextProvider} from './context/Context';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StudentContextProvider>
     <App />
-  </React.StrictMode>,
+  </StudentContextProvider>,
   document.getElementById('root')
 );
 

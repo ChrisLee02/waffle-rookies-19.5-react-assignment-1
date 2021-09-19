@@ -1,0 +1,7 @@
+.Comment {
+    height: 600px;
+    border: 1px #D3D3D3 solid;
+}
+#CommentText {
+    margin-top: 280px;
+}
