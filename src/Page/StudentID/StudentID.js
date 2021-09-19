@@ -37,7 +37,7 @@ const StudentID = () => {
         if(context.studentData.filter(student=>student.id===Number(id)).length === 0) {
             history.push('/students');
         } else {
-            context.setNowStudentData(context.studentData.filter(student=>student.id===Number(id))[0]);
+            context.setNowStudentData(context.studentData.find(student=>student.id===Number(id)));
         }
     },[params]);
 
