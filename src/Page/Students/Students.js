@@ -10,7 +10,7 @@ import StudentAddModal from '../../component/Modal/StudentAddModal/StudentAddMod
 import {useStudentContext} from '../../context/Context';
 
 
-const Students = (props) => {
+const Students = () => {
     const context = useStudentContext();
 
     const [modalOpen, setModalOpen] = useState(false); // 모달은 기본값이 꺼진 상태로
@@ -35,7 +35,7 @@ const Students = (props) => {
                 </div>
                 <div className={'Right'}>
                     {context.nowStudentData.name === null ? <DetailNotSelected/> : //현재 선택된 학생이 있는지 판단
-                        <Detail history={props.history}/>}
+                        <Detail/>}
                 </div>
                 {/*선택된 학생이 있으면 Detail 표시, 없으면 메세지창을 표시*/}
             </div>

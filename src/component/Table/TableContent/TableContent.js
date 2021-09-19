@@ -1,7 +1,6 @@
 import './TableContent.css'
 import Arrow1 from '../../../Data/Arrow1.svg'
 import Arrow2 from '../../../Data/Arrow2.svg'
-import {useState} from 'react';
 import {useStudentContext} from '../../../context/Context';
 
 const TableContent = (props) => {
@@ -28,14 +27,14 @@ const TableContent = (props) => {
                 <div className={'Grade'}>{props.student.grade}</div>
                 <div></div>
                 {/*공백 맞추기용*/}
-                <button onClick={handleClick} id={'Arrow1'}><img src={Arrow1} width={'33px'} height={'33px'}/></button>
+                <button onClick={handleClick} id={'Arrow1'}><img alt='' src={Arrow1} width={'33px'} height={'33px'}/></button>
             </div> :
             <div className={'TableContent2'}>
                 <div className={'Name'}>{props.student.name}</div>
                 <div className={'Grade'}>{props.student.grade}</div>
                 <div></div>
                 {/*공백 맞추기용*/}
-                <button onClick={handleClick} id={'Arrow2'}><img src={Arrow2} width={'33px'} height={'33px'}/>
+                <button onClick={handleClick} id={'Arrow2'}><img alt='' src={Arrow2} width={'33px'} height={'33px'}/>
                 </button>
             </div>
     )

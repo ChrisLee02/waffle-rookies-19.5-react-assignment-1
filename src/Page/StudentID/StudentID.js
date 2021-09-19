@@ -1,9 +1,8 @@
 import './StudentID.css'
 import IDHeader from '../../component/Header/IDHeader';
-import StudentAddModal from '../../component/Modal/StudentAddModal/StudentAddModal';
 import {useStudentContext} from '../../context/Context';
 import {useEffect ,useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import IDButtons from '../../component/Buttons/Buttons';
 import RoughProfile from '../../component/Profile/RoughProfile/RoughProfile';
 import ProfileInfo from '../../component/Profile/ProfileInfo/ProfileInfo';
@@ -12,9 +11,10 @@ import StudentDeleteModal from '../../component/Modal/StudentDeleteModal/Student
 import LockedProfileInfo from '../../component/Profile/LockedProfileInfo/LockedProfileInfo';
 import LockedButtons from '../../component/Buttons/LockedButtons';
 
-const StudentID = (props) => {
-    const context = useStudentContext();
 
+const StudentID = () => {
+    const context = useStudentContext();
+    const history = useHistory();
     const [modalOpen, setModalOpen] = useState(false); // 모달은 기본값이 꺼진 상태로
 
     const openModal = () => { //제목이 곧 내용
@@ -35,7 +35,7 @@ const StudentID = (props) => {
     const id = params.id;
     useEffect(() => {
         if(context.studentData.filter(student=>student.id===Number(id)).length === 0) {
-            props.history.push('/students');
+            history.push('/students');
         } else {
             context.setNowStudentData(context.studentData.filter(student=>student.id===Number(id))[0]);
         }
@@ -46,9 +46,9 @@ const StudentID = (props) => {
 
     return (
         <div className={'StudentID'}>
-            <StudentDeleteModal history={props.history} closeModal={closeModal}
+            <StudentDeleteModal history={history} closeModal={closeModal}
                                 modalOpen={modalOpen}/>
-            <IDHeader history={props.history}/>
+            <IDHeader history={history}/>
             <div className={'IDDown'}>
                 <div className={'IDLeft'}>
                     <RoughProfile></RoughProfile>

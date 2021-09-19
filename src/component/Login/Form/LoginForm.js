@@ -1,6 +1,8 @@
 import './LoginForm.css'
+import {useHistory} from 'react-router-dom';
 
-const LoginForm = (props) => {
+const LoginForm = () => {
+    const history = useHistory();
     return (
 
         <form className={'LoginForm'} action="" name={'IDPW'}>
@@ -9,7 +11,7 @@ const LoginForm = (props) => {
             <label className={'LoginLabel'} htmlFor={"LogInPW"}>Password</label>
             <input id={'LogInPW'} type="text"/>
             <button onClick={() => {
-                props.history.push('/students');
+                history.push('/students');
                 localStorage.setItem('isLogIn', true);
             }} id={'SignIn'}>Sign in</button> {/**/}
         </form>

@@ -1,15 +1,14 @@
 import './StudentDeleteModal.css'
-import {useState} from 'react';
 import {useStudentContext} from '../../../context/Context';
 import Warning from '../../../Data/Warning.svg'
 import Delete from '../../../Data/Delete.svg';
-import Lock from '../../../Data/UnLocked.svg';
 import X from '../../../Data/X.svg'
+import {useHistory} from 'react-router-dom';
 
 const StudentDeleteModal = (props) => {
     const context = useStudentContext();
     const open = props.modalOpen;
-
+    const history = useHistory();
 
     return (
         // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -26,14 +25,13 @@ const StudentDeleteModal = (props) => {
 
                     <div className={'Button'}>
                         <div></div>
-                        <button  className={'DeleteClose'} onClick={props.closeModal}><img src={X}/>닫기</button>
+                        <button  className={'DeleteClose'} onClick={props.closeModal}><img alt='' src={X}/>닫기</button>
                         <div></div>
                         <button onClick={()=>{
                             context.delStudent();
                             props.closeModal();
-                            props.history.push('/students');
-                        }} className={'IdButton Delete'}> <img src={Delete}/>삭제</button>
-
+                            history.push('/students');
+                        }} className={'IdButton Delete'}> <img alt='' src={Delete}/>삭제</button>
                     </div>
                 </div>
             ) : null}

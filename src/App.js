@@ -1,7 +1,6 @@
 import Students from './Page/Students/Students';
-import React, {useEffect} from 'react';
-import {Route, BrowserRouter, Switch, Redirect, useParams} from 'react-router-dom'
-import {useStudentContext} from './context/Context';
+import React from 'react';
+import {Route, BrowserRouter, Switch, Redirect} from 'react-router-dom'
 import StudentID from './Page/StudentID/StudentID';
 import Login from './Page/Login/Login';
 

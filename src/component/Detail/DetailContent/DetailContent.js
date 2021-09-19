@@ -1,5 +1,4 @@
 import './DetailContent.css'
-import {useState} from 'react';
 import {useStudentContext} from '../../../context/Context';
 
 const DetailContent = () => {

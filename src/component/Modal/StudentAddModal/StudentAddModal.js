@@ -8,9 +8,7 @@ const StudentAddModal = (props) => {
     const open = props.modalOpen;
     const [name, setName] = useState();
     const [grade, setGrade] = useState();
-    const [profileImg, setProfileImg] = useState(); //모달의 텍스트 박스에 들어갈 변수
     const AddStudent = () => {
-        const korean = /[가-힣]/; //한국어인지 검사하는 코드
         if ( (name.length === 2 || name.length === 3) && /[가-힣]{2,3}/g.test(name)  && [1, 2, 3].includes(grade)) {  //2글자이면서, 두 글자 모두 한국어면서, 학년이 1~3이면
             const tmp = context.studentData.filter(student => student.grade === grade);
             const tmp2 = tmp.filter(student => student.name === name); //학년, 이름으로 필터링
