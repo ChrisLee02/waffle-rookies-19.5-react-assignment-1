@@ -1,7 +1,7 @@
 import './StudentID.css'
 import IDHeader from '../../component/Header/IDHeader';
 import {useStudentContext} from '../../context/Context';
-import {useEffect ,useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import IDButtons from '../../component/Buttons/Buttons';
 import RoughProfile from '../../component/Profile/RoughProfile/RoughProfile';
@@ -10,6 +10,7 @@ import Comment from '../../component/Comment/Comment';
 import StudentDeleteModal from '../../component/Modal/StudentDeleteModal/StudentDeleteModal';
 import LockedProfileInfo from '../../component/Profile/LockedProfileInfo/LockedProfileInfo';
 import LockedButtons from '../../component/Buttons/LockedButtons';
+import axios from 'axios';
 
 
 const StudentID = () => {
@@ -23,25 +24,35 @@ const StudentID = () => {
     const closeModal = () => { //제목이 곧 내용
         setModalOpen(false);
     }
-
+    const params = useParams();
+    const id = params.id;
     const controlLock = () => {
         if (context.nowStudentData.locked) {
-            context.setNowStudentData({...context.nowStudentData, locked:false});
+            axios.post(context.baseURL+'/student/'+id+'/unlock' , context.nowStudentData , context.config)
+                .then((response)=>context.setNowStudentData({...context.nowStudentData, locked: false}))
+                .catch((response)=>window.alert('실패'));
+
         } else {
-            context.setNowStudentData({...context.nowStudentData, locked:true});
+            axios.post(context.baseURL+'/student/'+id+'/lock', context.nowStudentData , context.config)
+                .then((response)=>context.setNowStudentData({...context.nowStudentData, locked: true}))
+                .catch((response)=>window.alert('실패'));
         }
     }
-    const params = useParams()
-    const id = params.id;
+
+
     useEffect(() => {
-        if(context.studentData.filter(student=>student.id===Number(id)).length === 0) {
-            history.push('/students');
-        } else {
-            context.setNowStudentData(context.studentData.find(student=>student.id===Number(id)));
+        if(localStorage.getItem('isLogIn') !== 'true'){
+            history.push('/login');
         }
-    },[params]);
+        axios.get(context.baseURL + '/student/' + id, context.config).then((response) => {
+            console.log('ID 성공');
+            context.setNowStudentData(response.data);
+        }).catch((response)=>{
+            window.alert('ID 실패');
+            history.push('/students');
+        });
 
-
+    },[])
 
 
     return (
@@ -53,7 +64,8 @@ const StudentID = () => {
                 <div className={'IDLeft'}>
                     <RoughProfile></RoughProfile>
                     <div className={'IDTitle'}>정보</div>
-                    {context.nowStudentData.locked ? <LockedProfileInfo></LockedProfileInfo> : <ProfileInfo></ProfileInfo>}
+                    {context.nowStudentData.locked ? <LockedProfileInfo></LockedProfileInfo> :
+                        <ProfileInfo></ProfileInfo>}
                 </div>
                 <div className={'IDRight'}>
                     {context.nowStudentData.locked ? <LockedButtons controlLock={controlLock}></LockedButtons> :

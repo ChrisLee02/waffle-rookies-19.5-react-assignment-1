@@ -9,13 +9,13 @@ const LockedProfileInfo = () => {
             <ul className={'Infomation'}>
                 <li className={'InfoLine'}>
                     전화번호 <input disabled={true} className={'InfoInput'} id={'Phone'}
-                                value={context.nowStudentData.phone}/>
+                                value={context.nowStudentData.phone || ''}/>
                 </li>
 
 
                 <li className={'InfoLine'}>
                     이메일 <div className={'Shell'}><input className={'InfoInput'} id={'Email'} disabled={true}
-                                    value={context.nowStudentData.email}/></div>
+                                    value={context.nowStudentData.email || ''}/></div>
                 </li>
 
 
@@ -23,7 +23,7 @@ const LockedProfileInfo = () => {
                     전공
                     <select disabled={true} className={'InfoInput'} id={'Major'} onChange={(e) => {
                         context.setNowStudentData({...context.nowStudentData, major: e.target.value});
-                    }} value={context.nowStudentData.major}>
+                    }} value={context.nowStudentData.major || ''}>
                         <option value="">전공선택</option>
                         <option value="frontend">frontend</option>
                         <option value="backend">backend</option>
@@ -35,7 +35,7 @@ const LockedProfileInfo = () => {
                 <li className={'InfoLine'} id={'Profile'}>
                     프로필 <input disabled={true} onChange={e => {
                     context.setNowStudentData({...context.nowStudentData, profileImg: e.target.value});
-                }} className={'InfoInput'} value={context.nowStudentData.profileImg}/>
+                }} className={'InfoInput'} value={context.nowStudentData.profileImg || ''}/>
                 </li>
             </ul>
 

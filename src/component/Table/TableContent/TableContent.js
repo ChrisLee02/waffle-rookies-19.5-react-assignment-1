@@ -11,11 +11,15 @@ const TableContent = (props) => {
         if (props.selected === false) {  //선택되지 않은 학생을 클릭하면,
             context.setNowStudentData(props.student);
         } else {    //선택된 학생을 다시 클릭하면,
-            context.setNowStudentData({
-                id: Math.random(),
+            context.setNowStudentData({      //현재 선택된 학생의 데이터, id 값만 임의로 부여해둠.
+                id: null,
                 name: null,
                 grade: null,
-                profileImg: null
+                profileImg: null,
+                email: '',
+                phone: '',
+                major: '',
+                locked: false
             });
         }
     }

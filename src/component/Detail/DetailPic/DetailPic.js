@@ -5,7 +5,7 @@ const DetailPic = () => {
     const context = useStudentContext();
     return (
         <div className={'DetailPic'}>
-            <img src={context.studentData.filter(student=>student.id === context.nowStudentData.id)[0].profileImg} alt='No Image'
+            <img src={context.nowStudentData.profileImg} alt='No Image'
             width = {'100%'} height={'100%'} />
         </div>
     )
