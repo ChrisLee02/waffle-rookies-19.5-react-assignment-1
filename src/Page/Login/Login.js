@@ -6,8 +6,8 @@ import {useHistory} from 'react-router-dom';
 const Login = () => {
     const history = useHistory();
     useEffect(() => {
-        if (localStorage.getItem('isLogIn') !== 'true') {
-            history.push('/login');
+        if (localStorage.getItem('isLogIn') === 'true') {
+            history.push('/students');
         }
     },[])
     return (

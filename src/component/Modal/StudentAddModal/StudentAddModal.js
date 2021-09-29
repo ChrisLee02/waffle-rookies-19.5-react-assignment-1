@@ -39,15 +39,15 @@ const StudentAddModal = (props) => {
                                     props.closeModal();
                                     context.setNowStudentData({      //현재 선택된 학생의 데이터, id 값만 임의로 부여해둠.
                                         id: response.data.id,
-                                        name: null,
-                                        grade: null,
+                                        name: name,
+                                        grade: grade,
                                         profileImg: null,
                                         email: '',
                                         phone: '',
                                         major: '',
                                         locked: false
                                     })
-                                     window.location.replace('/students'); //새로고침을 해줘야 리렌더가 일어남.
+                                      //새로고침을 해줘야 리렌더가 일어남.
                                 })
                                 .catch((error)=>{
                                     window.alert(error.response.data.message);

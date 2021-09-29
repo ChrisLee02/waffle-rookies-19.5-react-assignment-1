@@ -5,6 +5,7 @@ import StudentID from './Page/StudentID/StudentID';
 import Login from './Page/Login/Login';
 import axios from 'axios';
 import {useStudentContext} from './context/Context';
+import './App.css'
 
 function App() {
     const context = useStudentContext();
@@ -19,7 +20,7 @@ function App() {
                 console.log('씨발');
                 console.log(context.config.headers);
             })
-    },[])
+    },[context.nowStudentData])
 
     return (
         <BrowserRouter>

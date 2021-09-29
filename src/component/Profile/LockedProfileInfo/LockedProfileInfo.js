@@ -15,7 +15,7 @@ const LockedProfileInfo = () => {
 
                 <li className={'InfoLine'}>
                     이메일 <div className={'Shell'}><input className={'InfoInput'} id={'Email'} disabled={true}
-                                    value={context.nowStudentData.email || ''}/></div>
+                                                        value={context.nowStudentData.email || ''}/></div>
                 </li>
 
 
@@ -39,9 +39,9 @@ const LockedProfileInfo = () => {
                 </li>
             </ul>
 
-            <img src={Locked} width={'100px'} height={'100px'} />
+            <img src={Locked} width={'100px'} height={'100px'}/>
 
-            <h1>수정하려면 잠금을 해제하세요</h1>
+
         </div>
     )
 }

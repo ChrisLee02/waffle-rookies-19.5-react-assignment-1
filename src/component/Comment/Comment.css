@@ -1,7 +1,32 @@
-.Comment {
-    height: 600px;
+.CommentBox {
+    height: 500px;
     border: 1px #D3D3D3 solid;
+    overflow-y: scroll;
 }
-#CommentText {
-    margin-top: 280px;
+
+.CommentInput {
+    line-height: 30px;
+    width: 90%;
+}
+
+.CommentList {
+    height: 100%;
+    list-style-type: none;
+}
+
+.CommentInputBox{
+    margin-top: 10px;
+    display: flex;
+    height: 40px;
+
+}
+.CommentButton {
+    width: 10%;
+}
+
+.Comment{
+    line-height: 40px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: space-between;
 }
