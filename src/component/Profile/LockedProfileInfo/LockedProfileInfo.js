@@ -1,5 +1,5 @@
 import "./LockedProfileInfo.css";
-import { useStudentContext } from "../../../context/Context";
+import { useStudentContext } from "../../../context/StudentsContext";
 import Locked from "../../../Data/Locked.svg";
 
 const LockedProfileInfo = () => {

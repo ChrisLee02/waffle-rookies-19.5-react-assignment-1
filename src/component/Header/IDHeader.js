@@ -1,6 +1,6 @@
 import "./IDHeader.css";
 import Arrow2 from "../../Data/Arrow2.svg";
-import { useStudentContext } from "../../context/Context";
+import { useStudentContext } from "../../context/StudentsContext";
 import { useHistory } from "react-router-dom";
 
 const IDHeader = () => {

@@ -1,5 +1,5 @@
 import "./DetailHeader.css";
-import { useStudentContext } from "../../../context/Context";
+import { useStudentContext } from "../../../context/StudentsContext";
 import image from "../../../Data/PageMove.svg";
 import { useHistory } from "react-router-dom";
 

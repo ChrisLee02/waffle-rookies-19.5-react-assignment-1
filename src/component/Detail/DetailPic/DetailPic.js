@@ -1,5 +1,5 @@
 import "./DetailPic.css";
-import { useStudentContext } from "../../../context/Context";
+import { useStudentContext } from "../../../context/StudentsContext";
 
 const DetailPic = () => {
   const context = useStudentContext();

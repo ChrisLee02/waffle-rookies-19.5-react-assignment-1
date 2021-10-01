@@ -1,7 +1,7 @@
 import "./Table.css";
 import TableHeader from "./TableHeader/TableHeader";
 import TableContent from "./TableContent/TableContent";
-import { useStudentContext } from "../../context/Context";
+import { useStudentContext } from "../../context/StudentsContext";
 import NoTableContents from "./NoTableContents/NoTableContents";
 
 const Table = (props) => {

@@ -2,11 +2,11 @@ import "./LoginForm.css";
 import { useHistory, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useStudentContext } from "../../../context/Context";
 import { toast } from "react-toastify";
+import {useNetworkContext} from '../../../context/NetworkContext';
 
 const LoginForm = () => {
-  const context = useStudentContext();
+  const networkContext = useNetworkContext();
   const [account, setAccount] = useState({
     username: "",
     password: "",
@@ -28,7 +28,7 @@ const LoginForm = () => {
         console.log("성공");
         localStorage.setItem("JWT", response.data.access_token);
         localStorage.setItem("isLogIn", true);
-        context.setIsLogIn("true");
+        networkContext.setIsLogIn("true");
         history.push("/students");
       })
       .catch((error) => {

@@ -3,7 +3,7 @@ import LoginHeader from "../../component/Login/Header/LoginHeader";
 import LoginForm from "../../component/Login/Form/LoginForm";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {

@@ -1,7 +1,7 @@
 import "./TableContent.css";
 import Arrow1 from "../../../Data/Arrow1.svg";
 import Arrow2 from "../../../Data/Arrow2.svg";
-import { useStudentContext } from "../../../context/Context";
+import { useStudentContext } from "../../../context/StudentsContext";
 
 const TableContent = (props) => {
   const context = useStudentContext();

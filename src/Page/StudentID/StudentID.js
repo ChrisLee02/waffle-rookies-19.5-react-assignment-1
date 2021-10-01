@@ -1,6 +1,6 @@
 import "./StudentID.css";
 import IDHeader from "../../component/Header/IDHeader";
-import { useStudentContext } from "../../context/Context";
+import { useStudentContext } from "../../context/StudentsContext";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import IDButtons from "../../component/Buttons/Buttons";
@@ -14,9 +14,11 @@ import axios from "axios";
 import NoComment from "../../component/Comment/NoComment";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {useNetworkContext} from '../../context/NetworkContext';
 
 const StudentID = () => {
-  const context = useStudentContext();
+  const studentContext = useStudentContext();
+  const networkContext = useNetworkContext();
   const history = useHistory();
   const [modalOpen, setModalOpen] = useState(false); // 모달은 기본값이 꺼진 상태로
   const [comments, setComments] = useState([]);
@@ -33,7 +35,7 @@ const StudentID = () => {
   const id = params.id;
   const commentUpdate = () => {
     axios
-      .get(context.baseURL + "/student/" + id + "/comment", context.config)
+      .get(networkContext.baseURL + "/student/" + id + "/comment", networkContext.config)
       .then((response) => {
         console.log(response.data);
         setComments(
@@ -61,16 +63,16 @@ const StudentID = () => {
   };
 
   const controlLock = () => {
-    if (context.nowStudentData.locked) {
+    if (studentContext.nowStudentData.locked) {
       axios
         .post(
-          context.baseURL + "/student/" + id + "/unlock",
-          context.nowStudentData,
-          context.config
+          networkContext.baseURL + "/student/" + id + "/unlock",
+          studentContext.nowStudentData,
+          networkContext.config
         )
         .then((response) =>
-          context.setNowStudentData({
-            ...context.nowStudentData,
+          studentContext.setNowStudentData({
+            ...studentContext.nowStudentData,
             locked: false,
           })
         )
@@ -79,12 +81,12 @@ const StudentID = () => {
     } else {
       axios
         .post(
-          context.baseURL + "/student/" + id + "/lock",
-          context.nowStudentData,
-          context.config
+          networkContext.baseURL + "/student/" + id + "/lock",
+          studentContext.nowStudentData,
+          networkContext.config
         )
         .then((response) =>
-          context.setNowStudentData({ ...context.nowStudentData, locked: true })
+          studentContext.setNowStudentData({ ...studentContext.nowStudentData, locked: true })
         )
         .then(() => commentUpdate())
         .catch((response) => window.alert("실패"));
@@ -96,10 +98,10 @@ const StudentID = () => {
       history.push("/login");
     }
     axios
-      .get(context.baseURL + "/student/" + id, context.config)
+      .get(networkContext.baseURL + "/student/" + id, networkContext.config)
       .then((response) => {
         console.log("ID 성공");
-        context.setNowStudentData(response.data);
+        studentContext.setNowStudentData(response.data);
       })
       .catch((response) => {
         window.alert("ID 실패");
@@ -120,14 +122,14 @@ const StudentID = () => {
         <div className={"IDLeft"}>
           <RoughProfile></RoughProfile>
           <div className={"IDTitle"}>정보</div>
-          {context.nowStudentData.locked ? (
+          {studentContext.nowStudentData.locked ? (
             <LockedProfileInfo></LockedProfileInfo>
           ) : (
             <ProfileInfo></ProfileInfo>
           )}
         </div>
         <div className={"IDRight"}>
-          {context.nowStudentData.locked ? (
+          {studentContext.nowStudentData.locked ? (
             <LockedButtons controlLock={controlLock} />
           ) : (
             <IDButtons

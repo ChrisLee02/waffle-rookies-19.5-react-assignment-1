@@ -1,5 +1,5 @@
 import "./ProfileInfo.css";
-import { useStudentContext } from "../../../context/Context";
+import { useStudentContext } from "../../../context/StudentsContext";
 
 const ProfileInfo = () => {
   const context = useStudentContext();

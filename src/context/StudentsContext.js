@@ -17,13 +17,7 @@ export const StudentContextProvider = ({ children }) => {
     major: "",
     locked: false,
   });
-  const [isLogIn, setIsLogIn] = useState();
 
-  const baseURL =
-    "https://p04fpgjlo3.execute-api.ap-northeast-2.amazonaws.com/v1";
-  const config = {
-    headers: { Authorization: `Bearer ${localStorage.JWT}` },
-  };
   const setPhoneNum = (e) => {
     // 길이가 4, 9인 시점에서 지우는 중인지/쓰는 중인지로 2차 케이스를 나눔.
     setNowStudentData({ ...nowStudentData, phone: e.target.value });
@@ -62,11 +56,7 @@ export const StudentContextProvider = ({ children }) => {
         setStudentData,
         nowStudentData,
         setNowStudentData,
-        isLogIn,
-        setIsLogIn,
         setPhoneNum,
-        baseURL,
-        config,
       }}
     >
       {children}

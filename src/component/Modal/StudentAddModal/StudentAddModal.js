@@ -1,27 +1,29 @@
 import "./StudentAddModal.css";
 import { useState } from "react";
-import { useStudentContext } from "../../../context/Context";
+import { useStudentContext } from "../../../context/StudentsContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import {useNetworkContext} from '../../../context/NetworkContext';
 
 const StudentAddModal = (props) => {
-  const context = useStudentContext();
+  const studentContext = useStudentContext();
+  const networkContext = useNetworkContext();
   const open = props.modalOpen;
   const [name, setName] = useState();
   const [grade, setGrade] = useState();
   const onClick = () => {
     axios
       .post(
-        context.baseURL + "/student",
+        networkContext.baseURL + "/student",
         {
           name: name,
           grade: Number(grade),
         },
-        context.config
+        networkContext.config
       )
       .then((response) => {
         props.closeModal();
-        context.setNowStudentData({
+        studentContext.setNowStudentData({
           //현재 선택된 학생의 데이터, id 값만 임의로 부여해둠.
           id: response.data.id,
           name: name,

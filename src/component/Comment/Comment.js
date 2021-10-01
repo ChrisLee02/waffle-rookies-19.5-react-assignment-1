@@ -1,22 +1,21 @@
 import "./Comment.css";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
-import { useStudentContext } from "../../context/Context";
+import {  useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import {useNetworkContext} from '../../context/NetworkContext';
 
 const Comment = (props) => {
-  const context = useStudentContext();
-  const history = useHistory();
+  const networkContext = useNetworkContext();
   const params = useParams();
   const id = params.id;
   const [commentMessage, setCommentMessage] = useState("");
   const commentAdd = () => {
     axios
       .post(
-        context.baseURL + "/student/" + id + "/comment",
+        networkContext.baseURL + "/student/" + id + "/comment",
         { content: commentMessage },
-        context.config
+        networkContext.config
       )
       .then(() => {
         props.commentUpdate();

@@ -2,12 +2,14 @@ import Lock from "../../Data/UnLocked.svg";
 import Delete from "../../Data/Delete.svg";
 import Save from "../../Data/Save.svg";
 import "./Buttons.css";
-import { useStudentContext } from "../../context/Context";
 import axios from "axios";
 import { toast } from "react-toastify";
+import {useNetworkContext} from '../../context/NetworkContext';
+import {useStudentContext} from '../../context/StudentsContext';
 
 const IDButtons = (props) => {
-  const context = useStudentContext();
+  const studentContext = useStudentContext();
+  const networkContext = useNetworkContext();
   return (
     <div className={"IDButtons"}>
       <button onClick={props.controlLock} className={"IdButton Lock"}>
@@ -21,16 +23,16 @@ const IDButtons = (props) => {
         onClick={() => {
           axios
             .patch(
-              context.baseURL +
+              networkContext.baseURL +
                 "/student/" +
-                context.nowStudentData.id.toString(),
+                studentContext.nowStudentData.id.toString(),
               {
-                profile_img: context.nowStudentData.profile_img,
-                email: context.nowStudentData.email,
-                phone: context.nowStudentData.phone,
-                major: context.nowStudentData.major,
+                profile_img: studentContext.nowStudentData.profile_img,
+                email: studentContext.nowStudentData.email,
+                phone: studentContext.nowStudentData.phone,
+                major: studentContext.nowStudentData.major,
               },
-              context.config
+              networkContext.config
             )
             .then(() => {
               props.commentUpdate();

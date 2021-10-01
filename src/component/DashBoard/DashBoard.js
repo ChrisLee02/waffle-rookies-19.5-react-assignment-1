@@ -1,5 +1,5 @@
 import "./DashBoard.css";
-import { useStudentContext } from "../../context/Context";
+import { useStudentContext } from "../../context/StudentsContext";
 import { Pie, PieChart, Tooltip } from "recharts";
 import { useState, useEffect } from "react";
 

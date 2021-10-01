@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { StudentContextProvider } from "./context/Context";
-
+import { StudentContextProvider } from "./context/StudentsContext";
+import {NetworkContextProvider} from './context/NetworkContext';
 ReactDOM.render(
   <StudentContextProvider>
-    <App />
+      <NetworkContextProvider>
+          <App />
+      </NetworkContextProvider>
   </StudentContextProvider>,
   document.getElementById("root")
 );

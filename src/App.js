@@ -1,36 +1,34 @@
 import Students from "./Page/Students/Students";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Route,
   BrowserRouter,
   Switch,
   Redirect,
-  useHistory,
-  Link,
-  Router,
-  useParams,
 } from "react-router-dom";
 import StudentID from "./Page/StudentID/StudentID";
 import Login from "./Page/Login/Login";
 import axios from "axios";
-import { useStudentContext } from "./context/Context";
+import { useStudentContext } from "./context/StudentsContext";
 import "./App.css";
 import { toast } from "react-toastify";
+import {useNetworkContext} from './context/NetworkContext';
 
 function App() {
-  const context = useStudentContext();
+  const studentContext = useStudentContext();
+  const networkContext = useNetworkContext();
 
   useEffect(() => {
-    context.setIsLogIn(localStorage.getItem("isLogIn"));
+    networkContext.setIsLogIn(localStorage.getItem("isLogIn"));
     axios
-      .get(context.baseURL + "/student", context.config)
+      .get(networkContext.baseURL + "/student", networkContext.config)
       .then((response) => {
-        context.setStudentData(response.data);
+        studentContext.setStudentData(response.data);
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
-  }, [context.nowStudentData]);
+  }, [studentContext.nowStudentData]);
 
   return (
     <BrowserRouter>

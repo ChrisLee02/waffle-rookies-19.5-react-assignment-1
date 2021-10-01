@@ -1,5 +1,5 @@
 import "./RoughProfile.css";
-import { useStudentContext } from "../../../context/Context";
+import { useStudentContext } from "../../../context/StudentsContext";
 
 const RoughProfile = () => {
   const context = useStudentContext();

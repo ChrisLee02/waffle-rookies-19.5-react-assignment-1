@@ -1,5 +1,5 @@
 import "./DetailContent.css";
-import { useStudentContext } from "../../../context/Context";
+import { useStudentContext } from "../../../context/StudentsContext";
 
 const DetailContent = () => {
   const context = useStudentContext();

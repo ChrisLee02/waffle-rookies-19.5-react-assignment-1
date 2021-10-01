@@ -1,9 +1,9 @@
 import "./Header.css";
 import Waffle from "../../Data/Waffle.svg";
-import { useHistory, Link } from "react-router-dom";
-import { useStudentContext } from "../../context/Context";
+import { useHistory } from "react-router-dom";
+import {useNetworkContext} from '../../context/NetworkContext';
 const Header = () => {
-  const context = useStudentContext();
+  const networkContext = useNetworkContext();
   const history = useHistory();
   return (
     <header className={"Header"}>
@@ -18,7 +18,7 @@ const Header = () => {
         onClick={() => {
           localStorage.setItem("JWT", null);
           localStorage.setItem("isLogIn", false);
-          context.setIsLogIn("false");
+          networkContext.setIsLogIn("false");
           history.push("/login");
         }}
       >
