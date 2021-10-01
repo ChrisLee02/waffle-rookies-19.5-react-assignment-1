@@ -1,39 +1,37 @@
 .IdButton {
-    width: 100px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    margin-left: 42px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 10px;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 42px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 10px;
 }
 
 .LockedIdButton {
-    width: 100px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    margin-left: 42px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 10px;
-    background-color: #C4C4C4;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 42px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 10px;
+  background-color: #c4c4c4;
 }
-
 
 .Lock {
-    background-color: #C4C4C4;
-
+  background-color: #c4c4c4;
 }
 .Delete {
-    background-color: #FCD8D8;
+  background-color: #fcd8d8;
 }
 .Save {
-    background-color: #D3FFDD;
+  background-color: #d3ffdd;
 }
 
 .IDButtons {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }

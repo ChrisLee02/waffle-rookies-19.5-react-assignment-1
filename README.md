@@ -12,17 +12,12 @@
 
   
 
-- 시간 다루는 라이브러리는 [`luxon`](https://moment.github.io/luxon/#/) 이나 [`dayjs`](https://day.js.org/) 중 취향에 맞는 걸 골라 사용하면 된다.
+- 시간 다루는 라이브러리는 [`luxon`](https://moment.github.io/luxon/#/) 이나 [`dayjs`](https://day.js.org/) 중 취향에 맞는 걸 골라 사용하면 된다. => dayjs 채택: 이유-사람들이 많이 씀,,ㅋ
       - 단, ***"왜 그 라이브러리를 선택했는가"*** 에 대한 내용을 PR에 명시해야 한다.
   
 - `cookie`를 저장소로 이용해서, `24시간 동안 안 보기` 버튼이 있는 팝업을 만들어야 한다.
-  - 내용이나 디자인은 자유이다. 딱 봤을 때 정상적인 ui이면 괜찮다.
   - ***새로고침했을 때***, 이전에 `24시간 동안 안 보기` 버튼을 눌렀었고 그 이후로 24시간 이상이 지났으면 팝업이 다시 떠야 한다.
   - [이거](https://www.gov.kr/portal/main) 처럼
-- 동명이인이 있거나 이름이 잘못되었거나 등의 오류 발생 시
-  - 지금까지는 `window.alert`를 사용했다. 사실 `window.alert`를 막 쓰는 건 좋지 않다 ([참고](https://developer.mozilla.org/ko/docs/Web/API/Window/alert#%EC%B0%B8%EA%B3%A0))
-  - `alert` 대신 적당한 토스트 라이브러리를 찾아서, 그걸로 대체한다.
-    - [예를 들어 이런 거](https://www.npmjs.com/package/react-toastify)
 - 코드 퀄리티
   - 강력한 필수 스펙입니다. 아주 중요하게, 모든 부분에서 지켜져야 합니다.
     1. `camelCase`, `PascalCase` 가 필수스펙이 됩니다.
@@ -31,8 +26,8 @@
     1. `prettier` 적용해 주시기 바랍니다.
 - 배포
   - 가령 cloudfront가 던지는 403 404 같은 에러들이 모두 해결되어야 합니다.
-  - **리다이렉트 케이스 세분화해야됨.
   - context 사용 용도에 따라 세분화할 필요가 있어 보이는데?
+  - 귀찮,,
 
 ## 참고사항
 - 이번 과제부터, 라이브러리 제한이 완전히 풀립니다. 사용하고 싶으신 대로 사용하시기 바랍니다!

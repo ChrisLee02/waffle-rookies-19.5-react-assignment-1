@@ -1,13 +1,12 @@
 .DetailHeader {
-    padding-top: 11px;
-    display: flex;
-    justify-content: space-between;
+  padding-top: 11px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #GoDetail {
-    margin-right: 10px;
-    width: 35px;
-    height: 35px;
-    border: none;
-
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
+  border: none;
 }
