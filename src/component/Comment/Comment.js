@@ -1,9 +1,9 @@
 import "./Comment.css";
-import {  useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import {useNetworkContext} from '../../context/NetworkContext';
+import { useNetworkContext } from "../../context/NetworkContext";
 
 const Comment = (props) => {
   const networkContext = useNetworkContext();

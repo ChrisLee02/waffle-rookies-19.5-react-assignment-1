@@ -4,8 +4,8 @@ import Save from "../../Data/Save.svg";
 import "./Buttons.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-import {useNetworkContext} from '../../context/NetworkContext';
-import {useStudentContext} from '../../context/StudentsContext';
+import { useNetworkContext } from "../../context/NetworkContext";
+import { useStudentContext } from "../../context/StudentsContext";
 
 const IDButtons = (props) => {
   const studentContext = useStudentContext();

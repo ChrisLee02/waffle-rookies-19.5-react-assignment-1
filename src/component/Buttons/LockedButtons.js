@@ -6,7 +6,11 @@ import "./Buttons.css";
 const LockedIDButtons = (props) => {
   return (
     <div className={"IDButtons"}>
-      <button onClick={props.controlLock} className={"LockedIdButton"}>
+      <button
+        onClick={props.controlLock}
+        id={"Unlock"}
+        className={"LockedIdButton"}
+      >
         <img alt="" src={Lock} />
         해제
       </button>

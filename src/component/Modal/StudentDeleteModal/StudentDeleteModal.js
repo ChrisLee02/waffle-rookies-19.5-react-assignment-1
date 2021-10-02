@@ -6,7 +6,7 @@ import X from "../../../Data/X.svg";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import {useNetworkContext} from '../../../context/NetworkContext';
+import { useNetworkContext } from "../../../context/NetworkContext";
 
 const StudentDeleteModal = (props) => {
   const studentContext = useStudentContext();
@@ -36,7 +36,10 @@ const StudentDeleteModal = (props) => {
             <button
               onClick={() => {
                 axios
-                  .delete(networkContext.baseURL + "/student/" + id, networkContext.config)
+                  .delete(
+                    networkContext.baseURL + "/student/" + id,
+                    networkContext.config
+                  )
                   .then((response) => {
                     props.closeModal();
                     window.location.replace("/students"); //새로고침을 해줘야 리렌더가 일어남.

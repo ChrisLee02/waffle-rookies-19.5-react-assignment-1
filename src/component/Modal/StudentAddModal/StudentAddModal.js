@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useStudentContext } from "../../../context/StudentsContext";
 import axios from "axios";
 import { toast } from "react-toastify";
-import {useNetworkContext} from '../../../context/NetworkContext';
+import { useNetworkContext } from "../../../context/NetworkContext";
 
 const StudentAddModal = (props) => {
   const studentContext = useStudentContext();

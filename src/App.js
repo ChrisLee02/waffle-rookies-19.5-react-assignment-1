@@ -1,18 +1,13 @@
 import Students from "./Page/Students/Students";
 import React, { useEffect } from "react";
-import {
-  Route,
-  BrowserRouter,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import StudentID from "./Page/StudentID/StudentID";
 import Login from "./Page/Login/Login";
 import axios from "axios";
 import { useStudentContext } from "./context/StudentsContext";
 import "./App.css";
 import { toast } from "react-toastify";
-import {useNetworkContext} from './context/NetworkContext';
+import { useNetworkContext } from "./context/NetworkContext";
 
 function App() {
   const studentContext = useStudentContext();
@@ -20,14 +15,16 @@ function App() {
 
   useEffect(() => {
     networkContext.setIsLogIn(localStorage.getItem("isLogIn"));
-    axios
-      .get(networkContext.baseURL + "/student", networkContext.config)
-      .then((response) => {
-        studentContext.setStudentData(response.data);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
+    if (localStorage.getItem("isLogIn") === "true") {
+      axios
+        .get(networkContext.baseURL + "/student", networkContext.config)
+        .then((response) => {
+          studentContext.setStudentData(response.data);
+        })
+        .catch((error) => {
+          toast.error(error.response.data.message);
+        });
+    }
   }, [studentContext.nowStudentData]);
 
   return (

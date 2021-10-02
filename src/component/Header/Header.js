@@ -1,7 +1,7 @@
 import "./Header.css";
 import Waffle from "../../Data/Waffle.svg";
 import { useHistory } from "react-router-dom";
-import {useNetworkContext} from '../../context/NetworkContext';
+import { useNetworkContext } from "../../context/NetworkContext";
 const Header = () => {
   const networkContext = useNetworkContext();
   const history = useHistory();

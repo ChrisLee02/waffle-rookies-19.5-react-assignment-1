@@ -4,12 +4,12 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StudentContextProvider } from "./context/StudentsContext";
-import {NetworkContextProvider} from './context/NetworkContext';
+import { NetworkContextProvider } from "./context/NetworkContext";
 ReactDOM.render(
   <StudentContextProvider>
-      <NetworkContextProvider>
-          <App />
-      </NetworkContextProvider>
+    <NetworkContextProvider>
+      <App />
+    </NetworkContextProvider>
   </StudentContextProvider>,
   document.getElementById("root")
 );

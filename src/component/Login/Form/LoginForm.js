@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import {useNetworkContext} from '../../../context/NetworkContext';
+import { useNetworkContext } from "../../../context/NetworkContext";
 
 const LoginForm = () => {
   const networkContext = useNetworkContext();

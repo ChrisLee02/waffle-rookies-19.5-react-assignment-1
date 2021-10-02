@@ -20,6 +20,14 @@
   padding-top: 10px;
   background-color: #c4c4c4;
 }
+.LockedIdButton:hover {
+  cursor: default;
+  opacity: 1;
+}
+#Unlock:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
 
 .Lock {
   background-color: #c4c4c4;

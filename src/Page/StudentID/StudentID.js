@@ -14,7 +14,7 @@ import axios from "axios";
 import NoComment from "../../component/Comment/NoComment";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {useNetworkContext} from '../../context/NetworkContext';
+import { useNetworkContext } from "../../context/NetworkContext";
 
 const StudentID = () => {
   const studentContext = useStudentContext();
@@ -33,9 +33,14 @@ const StudentID = () => {
   };
   const params = useParams();
   const id = params.id;
+  const date = require("dayjs");
+
   const commentUpdate = () => {
     axios
-      .get(networkContext.baseURL + "/student/" + id + "/comment", networkContext.config)
+      .get(
+        networkContext.baseURL + "/student/" + id + "/comment",
+        networkContext.config
+      )
       .then((response) => {
         console.log(response.data);
         setComments(
@@ -44,7 +49,8 @@ const StudentID = () => {
               <li className={"Comment"}>
                 <div>{comment.content}</div>
                 <span>
-                  {comment.datetime.slice(0, 4) +
+                  {date(comment.datetime).format("YYYY-MM-DD HH:mm:ss")}
+                  {/*{comment.datetime.slice(0, 4) +
                     "년 " +
                     comment.datetime.slice(5, 7) +
                     "월 " +
@@ -53,7 +59,7 @@ const StudentID = () => {
                     (Number(comment.datetime.slice(11, 13)) + 9).toString() +
                     "시 " +
                     comment.datetime.slice(14, 16) +
-                    "분"}
+                    "분"} 아.. */}
                 </span>
               </li>
             );
@@ -86,7 +92,10 @@ const StudentID = () => {
           networkContext.config
         )
         .then((response) =>
-          studentContext.setNowStudentData({ ...studentContext.nowStudentData, locked: true })
+          studentContext.setNowStudentData({
+            ...studentContext.nowStudentData,
+            locked: true,
+          })
         )
         .then(() => commentUpdate())
         .catch((response) => window.alert("실패"));
