@@ -35,10 +35,11 @@ function App() {
         <Route path="/students/:id" component={StudentID} exact />
         <Route path="/students" component={Students} exact />
         <Route path="/login" component={Login} exact />
-        {localStorage.getItem("isLogIn") === "true" ? ( //로그인 되었
-          <Redirect to={"/students"} />
-        ) : (
+        {networkContext.token === "null" ||
+        networkContext.token === undefined ? ( //로그인 안되었다면
           <Redirect to={"/login"} />
+        ) : (
+          <Redirect to={"/students"} />
         )}
       </Switch>
     </BrowserRouter>

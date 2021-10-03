@@ -10,13 +10,6 @@ const IDHeader = (props) => {
     <header className={"IDHeader"}>
       <Link
         onClick={() => {
-          context.setStudentData(
-            context.studentData.map((student) =>
-              student.id === props.nowStudentData.id
-                ? { ...student, locked: props.nowStudentData.locked }
-                : student
-            )
-          );
           context.setNowStudentID(props.nowStudentData.id);
         }}
         className={"Back"}
