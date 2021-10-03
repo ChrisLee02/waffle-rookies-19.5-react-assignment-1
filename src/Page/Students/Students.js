@@ -65,20 +65,20 @@ const Students = () => {
       .catch((error) => {
         toast.error(error.response.data.message);
       });
-    if(studentContext.nowStudentID !== null) {
+    if (studentContext.nowStudentID !== null) {
       axios
-          .get("/student/" + studentContext.nowStudentID)
-          .then((response) => {
-            setNowStudentData(response.data);
-          })
-          .catch((error)=>{
-            toast(error.response.data.message)
-          })
+        .get("/student/" + studentContext.nowStudentID)
+        .then((response) => {
+          setNowStudentData(response.data);
+        })
+        .catch((error) => {
+          toast(error.response.data.message);
+        });
     }
   }, [studentContext.nowStudentID]);
 
-  useEffect(()=>{
-    if (networkContext.token === undefined || networkContext.token === 'null') {
+  useEffect(() => {
+    if (networkContext.token === undefined || networkContext.token === "null") {
       history.push("/login");
     }
     if (getCookie("popUpPostpone") === "Y") {
@@ -86,11 +86,15 @@ const Students = () => {
     } else {
       setPopUpOpen(true);
     }
-  }, [])
+  }, []);
 
   return (
     <div className={"Students"}>
-      <StudentAddModal setNowStudentData={setNowStudentData} closeModal={closeAddModal} modalOpen={addModalOpen} />
+      <StudentAddModal
+        setNowStudentData={setNowStudentData}
+        closeModal={closeAddModal}
+        modalOpen={addModalOpen}
+      />
       <PopUp popUpOpen={popUpOpen} closePopUp={closePopUp}></PopUp>
       <Header />
       <DashBoard />
@@ -101,10 +105,14 @@ const Students = () => {
             setSearch={setSearch}
             openModal={openAddModal}
           />
-          <Table setNowStudentData={setNowStudentData} nowStudentData={nowStudentData} search={search} />
+          <Table
+            setNowStudentData={setNowStudentData}
+            nowStudentData={nowStudentData}
+            search={search}
+          />
         </div>
         <div className={"Right"}>
-            <Detail nowStudentData={nowStudentData} />
+          <Detail nowStudentData={nowStudentData} />
         </div>
         {/*선택된 학생이 있으면 Detail 표시, 없으면 메세지창을 표시*/}
       </div>

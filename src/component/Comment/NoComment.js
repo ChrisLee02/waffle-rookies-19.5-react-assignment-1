@@ -11,10 +11,7 @@ const NoComment = (props) => {
 
   const commentAdd = () => {
     axios
-      .post(
-        "/student/" + id + "/comment",
-        { content: commentMessage },
-      )
+      .post("/student/" + id + "/comment", { content: commentMessage })
       .then(() => {
         props.commentUpdate();
         setCommentMessage("");
@@ -31,10 +28,13 @@ const NoComment = (props) => {
           댓글이 없어요 :(
         </p>
       </div>
-      <form onSubmit={(e)=>{
-        e.preventDefault();
-        commentAdd();
-      }} className={"CommentInputBox"}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          commentAdd();
+        }}
+        className={"CommentInputBox"}
+      >
         <input
           value={commentMessage}
           onChange={(e) => {
@@ -44,7 +44,7 @@ const NoComment = (props) => {
           placeholder={"댓글을 작성하세요"}
           type="text"
         />
-        <button type={'submit'} className={"CommentButton"}>
+        <button type={"submit"} className={"CommentButton"}>
           작성
         </button>
       </form>

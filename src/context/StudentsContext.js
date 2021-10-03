@@ -3,9 +3,7 @@ import { useContext, createContext, useState } from "react";
 const studentContext = createContext();
 
 export const StudentContextProvider = ({ children }) => {
-  const [studentData, setStudentData] = useState(
-    []
-  );
+  const [studentData, setStudentData] = useState([]);
   const [nowStudentID, setNowStudentID] = useState(null);
   return (
     <studentContext.Provider
@@ -13,7 +11,7 @@ export const StudentContextProvider = ({ children }) => {
         studentData,
         setStudentData,
         nowStudentID,
-        setNowStudentID
+        setNowStudentID,
       }}
     >
       {children}

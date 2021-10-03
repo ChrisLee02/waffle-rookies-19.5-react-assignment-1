@@ -7,29 +7,36 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const IDButtons = (props) => {
-
   return (
     <div className={"IDButtons"}>
-      <button onClick={props.controlLock} id={props.nowStudentData.locked ? "Unlock" : null } className={props.nowStudentData.locked ? "LockedIdButton" : "IdButton Lock"}>
-          {props.nowStudentData.locked ? <UnLock /> : <Lock />}
-          {props.nowStudentData.locked ? "해제" : "잠금"}
+      <button
+        onClick={props.controlLock}
+        id={props.nowStudentData.locked ? "Unlock" : null}
+        className={
+          props.nowStudentData.locked ? "LockedIdButton" : "IdButton Lock"
+        }
+      >
+        {props.nowStudentData.locked ? <UnLock /> : <Lock />}
+        {props.nowStudentData.locked ? "해제" : "잠금"}
       </button>
-      <button disabled={props.nowStudentData.locked} onClick={props.openModal} className={props.nowStudentData.locked ? "LockedIdButton" : "IdButton Delete"}>
-        <Delete/> 삭제
+      <button
+        disabled={props.nowStudentData.locked}
+        onClick={props.openModal}
+        className={
+          props.nowStudentData.locked ? "LockedIdButton" : "IdButton Delete"
+        }
+      >
+        <Delete /> 삭제
       </button>
       <button
         onClick={() => {
           axios
-            .patch(
-                "/student/" +
-                props.nowStudentData.id,
-              {
-                profile_img: props.nowStudentData.profile_img,
-                email: props.nowStudentData.email,
-                phone: props.nowStudentData.phone,
-                major: props.nowStudentData.major,
-              }
-            )
+            .patch("/student/" + props.nowStudentData.id, {
+              profile_img: props.nowStudentData.profile_img,
+              email: props.nowStudentData.email,
+              phone: props.nowStudentData.phone,
+              major: props.nowStudentData.major,
+            })
             .then(() => {
               props.commentUpdate();
             })
@@ -38,9 +45,11 @@ const IDButtons = (props) => {
             });
         }}
         disabled={props.nowStudentData.locked}
-        className={props.nowStudentData.locked ? "LockedIdButton" : "IdButton Save"}
+        className={
+          props.nowStudentData.locked ? "LockedIdButton" : "IdButton Save"
+        }
       >
-        <Save/> 저장
+        <Save /> 저장
       </button>
     </div>
   );

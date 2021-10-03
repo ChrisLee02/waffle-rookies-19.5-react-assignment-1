@@ -11,13 +11,10 @@ const StudentAddModal = (props) => {
   const [grade, setGrade] = useState();
   const onClick = () => {
     axios
-      .post(
-          "/student",
-        {
-          name: name,
-          grade: Number(grade),
-        }
-      )
+      .post("/student", {
+        name: name,
+        grade: Number(grade),
+      })
       .then((response) => {
         props.closeModal();
         studentContext.setNowStudentID(response.data.id);

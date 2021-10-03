@@ -21,10 +21,8 @@ const DashBoard = () => {
             name: "1st",
             value: percentage(1),
           },
-          { name: "2nd",
-            value: percentage(2) },
-          { name: "3rd",
-            value: percentage(3) },
+          { name: "2nd", value: percentage(2) },
+          { name: "3rd", value: percentage(3) },
         ]
   );
   useEffect(() => {
@@ -36,10 +34,8 @@ const DashBoard = () => {
               name: "1st",
               value: percentage(1),
             },
-            { name: "2nd",
-              value: percentage(2) },
-            { name: "3rd",
-              value: percentage(3) },
+            { name: "2nd", value: percentage(2) },
+            { name: "3rd", value: percentage(3) },
           ]
     );
   }, [context.studentData]); // 학생 데이터에 변화가 생기면(추가, 제거) => 대시보드의 데이터에도 바로 변화를 주도록

@@ -1,8 +1,8 @@
 import "./StudentDeleteModal.css";
 import { useStudentContext } from "../../../context/StudentsContext";
-import {ReactComponent as Warning} from "../../../Data/Warning.svg";
-import {ReactComponent as Delete} from "../../../Data/Delete.svg";
-import {ReactComponent as X} from "../../../Data/X.svg";
+import { ReactComponent as Warning } from "../../../Data/Warning.svg";
+import { ReactComponent as Delete } from "../../../Data/Delete.svg";
+import { ReactComponent as X } from "../../../Data/X.svg";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -19,7 +19,7 @@ const StudentDeleteModal = (props) => {
       {open ? (
         <div className={open ? "openDelModalInside" : "closeDelModalInside"}>
           <header className={"DeleteHeader"}>
-            <Warning width={"55px"} height={"45px"}/>
+            <Warning width={"55px"} height={"45px"} />
             <h1 id={"HeaderMessage"}>학생을 삭제합니다</h1>
           </header>
 
@@ -27,15 +27,13 @@ const StudentDeleteModal = (props) => {
 
           <div className={"DelButton"}>
             <button className={"DeleteClose"} onClick={props.closeModal}>
-              <X/>
+              <X />
               닫기
             </button>
             <button
               onClick={() => {
                 axios
-                  .delete(
-                    "/student/" + id,
-                  )
+                  .delete("/student/" + id)
                   .then((response) => {
                     props.closeModal();
                     history.push("/students"); //새로고침을 해줘야 리렌더가 일어남.
@@ -43,12 +41,12 @@ const StudentDeleteModal = (props) => {
                   .catch((error) => {
                     toast.error(error.response.data.message);
                   });
-                  studentContext.setNowStudentID(null);
+                studentContext.setNowStudentID(null);
               }}
               className={"IdButton Delete"}
             >
               {" "}
-              <Delete/>
+              <Delete />
               삭제
             </button>
           </div>

@@ -1,6 +1,6 @@
 import "./DetailHeader.css";
 import { useStudentContext } from "../../../context/StudentsContext";
-import {ReactComponent as Image} from "../../../Data/PageMove.svg";
+import { ReactComponent as Image } from "../../../Data/PageMove.svg";
 import { useHistory } from "react-router-dom";
 
 const DetailHeader = (props) => {
@@ -14,7 +14,7 @@ const DetailHeader = (props) => {
         }}
         id={"GoDetail"}
       >
-        <Image/>
+        <Image />
       </button>
     </div>
   );

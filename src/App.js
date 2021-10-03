@@ -9,17 +9,15 @@ import "./App.css";
 import { toast } from "react-toastify";
 import { useNetworkContext } from "./context/NetworkContext";
 
-
-
-
 function App() {
   const studentContext = useStudentContext();
   const networkContext = useNetworkContext();
-  axios.defaults.baseURL = "https://p04fpgjlo3.execute-api.ap-northeast-2.amazonaws.com/v1";
-  axios.defaults.headers['Authorization'] = 'Bearer ' + networkContext.token;
+  axios.defaults.baseURL =
+    "https://p04fpgjlo3.execute-api.ap-northeast-2.amazonaws.com/v1";
+  axios.defaults.headers["Authorization"] = "Bearer " + networkContext.token;
 
   useEffect(() => {
-    if (networkContext.token !== undefined && networkContext.token !== 'null') {
+    if (networkContext.token !== undefined && networkContext.token !== "null") {
       axios
         .get("/student")
         .then((response) => {
@@ -40,7 +38,7 @@ function App() {
         {localStorage.getItem("isLogIn") === "true" ? ( //로그인 되었
           <Redirect to={"/students"} />
         ) : (
-          <Redirect to={"/login"}/>
+          <Redirect to={"/login"} />
         )}
       </Switch>
     </BrowserRouter>

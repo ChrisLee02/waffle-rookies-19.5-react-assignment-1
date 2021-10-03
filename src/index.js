@@ -5,10 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StudentContextProvider } from "./context/StudentsContext";
 import { NetworkContextProvider } from "./context/NetworkContext";
-import axios from 'axios';
-import {ToastContainer} from 'react-toastify';
-
-
+import axios from "axios";
+import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
   <StudentContextProvider>

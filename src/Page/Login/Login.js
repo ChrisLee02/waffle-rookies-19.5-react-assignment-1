@@ -5,16 +5,14 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from 'axios';
-import {useNetworkContext} from '../../context/NetworkContext';
-
-
+import axios from "axios";
+import { useNetworkContext } from "../../context/NetworkContext";
 
 const Login = () => {
   const history = useHistory();
   const networkContext = useNetworkContext();
   useEffect(() => {
-    if (networkContext.token !== undefined && networkContext.token !== 'null') {
+    if (networkContext.token !== undefined && networkContext.token !== "null") {
       history.push("/students");
     }
   }, []);
@@ -28,7 +26,6 @@ const Login = () => {
           <a href="">Create an account</a>.
         </p>
       </div>
-
     </div>
   );
 };

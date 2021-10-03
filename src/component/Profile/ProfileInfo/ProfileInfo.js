@@ -1,7 +1,6 @@
 import "./ProfileInfo.css";
 
 const ProfileInfo = (props) => {
-
   const emailCut = () => {
     try {
       return props.nowStudentData.email.slice(0, -13);
@@ -9,7 +8,6 @@ const ProfileInfo = (props) => {
       return null;
     }
   };
-
 
   const setPhoneNum = (e) => {
     // 길이가 4, 9인 시점에서 지우는 중인지/쓰는 중인지로 2차 케이스를 나눔.

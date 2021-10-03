@@ -1,5 +1,5 @@
 import "./LockedProfileInfo.css";
-import {ReactComponent as Locked} from "../../../Data/Locked.svg";
+import { ReactComponent as Locked } from "../../../Data/Locked.svg";
 
 const LockedProfileInfo = (props) => {
   return (
@@ -64,7 +64,7 @@ const LockedProfileInfo = (props) => {
           />
         </li>
       </ul>
-      <Locked width={"100px"} height={"100px"}/>
+      <Locked width={"100px"} height={"100px"} />
     </div>
   );
 };
