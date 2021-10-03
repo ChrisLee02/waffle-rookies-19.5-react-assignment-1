@@ -1,26 +1,20 @@
 import "./DetailHeader.css";
 import { useStudentContext } from "../../../context/StudentsContext";
-import image from "../../../Data/PageMove.svg";
+import {ReactComponent as Image} from "../../../Data/PageMove.svg";
 import { useHistory } from "react-router-dom";
 
-const DetailHeader = () => {
-  const context = useStudentContext();
+const DetailHeader = (props) => {
   const history = useHistory();
   return (
     <div className={"DetailHeader"}>
       <div></div>
       <button
         onClick={() => {
-          context.setNowStudentData(
-            context.studentData.filter(
-              (student) => student.id === context.nowStudentData.id
-            )[0]
-          );
-          history.push("/students/" + context.nowStudentData.id.toString());
+          history.push("/students/" + props.nowStudentData.id);
         }}
         id={"GoDetail"}
       >
-        <img alt="" src={image} />
+        <Image/>
       </button>
     </div>
   );

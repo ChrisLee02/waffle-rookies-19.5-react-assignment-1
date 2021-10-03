@@ -25,7 +25,7 @@
   ); /*여기서 뒷부분 흐려지게 만드는 효과를 줌*/
 }
 
-.openModalInside {
+.openDelModalInside {
   width: 40%;
   min-width: 450px;
   height: 40%;
@@ -36,7 +36,7 @@
   overflow: hidden;
 }
 
-.closeModalInside {
+.closeDelModalInside {
   width: 40%;
   min-width: 450px;
   height: 30%;
@@ -102,11 +102,11 @@
   }
 }
 
-.Button {
+.DelButton {
   margin-top: 80px;
   margin-right: 50px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .DeleteClose {
@@ -117,6 +117,7 @@
   border: none;
   margin-right: 20px;
   background-color: #d3eaff;
+  margin-left: 50px;
 }
 .DeleteHeader {
   margin-top: 42px;

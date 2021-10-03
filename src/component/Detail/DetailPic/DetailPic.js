@@ -1,12 +1,10 @@
 import "./DetailPic.css";
-import { useStudentContext } from "../../../context/StudentsContext";
 
-const DetailPic = () => {
-  const context = useStudentContext();
+const DetailPic = (props) => {
   return (
     <div className={"DetailPic"}>
       <img
-        src={context.nowStudentData.profileImg}
+        src={props.nowStudentData.profileImg}
         alt="No Image"
         width={"100%"}
         height={"100%"}

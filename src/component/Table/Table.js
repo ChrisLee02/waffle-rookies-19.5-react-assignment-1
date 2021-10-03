@@ -11,7 +11,8 @@ const Table = (props) => {
     .map((student) => {
       return (
         <TableContent // 현재 학생의 테이블 내용
-          selected={student.id === context.nowStudentData.id}
+          setNowStudentData={props.setNowStudentData}
+          selected={student.id === props.nowStudentData.id}
           student={student}
           key={student.id}
         ></TableContent> // selected 값을 참으로 전달

@@ -1,5 +1,4 @@
 import "./PopUp.css";
-import { useState } from "react";
 
 const PopUp = (props) => {
   const setCookie = (cookie_name, value, days) => {

@@ -1,14 +1,44 @@
 import "./ProfileInfo.css";
-import { useStudentContext } from "../../../context/StudentsContext";
 
-const ProfileInfo = () => {
-  const context = useStudentContext();
+const ProfileInfo = (props) => {
 
   const emailCut = () => {
     try {
-      return context.nowStudentData.email.slice(0, -13);
+      return props.nowStudentData.email.slice(0, -13);
     } catch (e) {
       return null;
+    }
+  };
+
+
+  const setPhoneNum = (e) => {
+    // 길이가 4, 9인 시점에서 지우는 중인지/쓰는 중인지로 2차 케이스를 나눔.
+    props.setNowStudentData({ ...props.nowStudentData, phone: e.target.value });
+    if (e.target.value.length === 4) {
+      if (e.target.value[3] === "-") {
+        props.setNowStudentData({
+          ...props.nowStudentData,
+          phone: e.target.value.slice(0, 3),
+        });
+      } else {
+        props.setNowStudentData({
+          ...props.nowStudentData,
+          phone: e.target.value.slice(0, 3) + "-" + e.target.value[3],
+        });
+      }
+    }
+    if (e.target.value.length === 9) {
+      if (e.target.value[8] === "-") {
+        props.setNowStudentData({
+          ...props.nowStudentData,
+          phone: e.target.value.slice(0, 8),
+        });
+      } else {
+        props.setNowStudentData({
+          ...props.nowStudentData,
+          phone: e.target.value.slice(0, 8) + "-" + e.target.value[8],
+        });
+      }
     }
   };
 
@@ -21,9 +51,9 @@ const ProfileInfo = () => {
             maxLength="13"
             className={"InfoInput"}
             id={"Phone"}
-            value={context.nowStudentData.phone || ""}
+            value={props.nowStudentData.phone || ""}
             onChange={(e) => {
-              context.setPhoneNum(e);
+              setPhoneNum(e);
             }}
           />
         </li>
@@ -35,9 +65,8 @@ const ProfileInfo = () => {
               id={"Email"}
               value={emailCut() || ""}
               onChange={(e) => {
-                //                   context.nowStudentData.email
-                context.setNowStudentData({
-                  ...context.nowStudentData,
+                props.setNowStudentData({
+                  ...props.nowStudentData,
                   email: e.target.value + "@waffle.hs.kr",
                 });
               }}
@@ -50,12 +79,12 @@ const ProfileInfo = () => {
             className={"InfoInput"}
             id={"Major"}
             onChange={(e) => {
-              context.setNowStudentData({
-                ...context.nowStudentData,
+              props.setNowStudentData({
+                ...props.nowStudentData,
                 major: e.target.value,
               });
             }}
-            value={context.nowStudentData.major || ""}
+            value={props.nowStudentData.major || ""}
           >
             <option value="">전공선택</option>
             <option value="frontend">frontend</option>
@@ -69,13 +98,13 @@ const ProfileInfo = () => {
           프로필{" "}
           <input
             onChange={(e) => {
-              context.setNowStudentData({
-                ...context.nowStudentData,
+              props.setNowStudentData({
+                ...props.nowStudentData,
                 profileImg: e.target.value,
               });
             }}
             className={"InfoInput"}
-            value={context.nowStudentData.profileImg || ""}
+            value={props.nowStudentData.profileImg || ""}
           />
         </li>
       </ul>

@@ -2,7 +2,7 @@
   height: 73px;
   border-bottom: 1px solid black;
   display: grid;
-  grid-template-columns: 2fr 1fr 5fr 1fr;
+  grid-template-columns: 2fr 1fr 6fr;
   background-color: #f8f8f8;
 }
 
@@ -10,17 +10,15 @@
   height: 73px;
   border-bottom: 1px solid black;
   display: grid;
-  grid-template-columns: 2fr 1fr 5fr 1fr;
+  grid-template-columns: 2fr 1fr 6fr;
   background-color: #c4c4c4;
 }
 
 .TableContent1:hover > #Arrow1 {
   display: block;
+  margin-left: 80%;
 }
 
-.TableContent2:hover > #Arrow1 {
-  display: block;
-}
 
 #Arrow1:hover {
   background-color: darkgrey;
@@ -45,7 +43,7 @@
 
 .Grade {
   font-size: 20px;
-  margin-top: 25px;
+  margin-top: 23px;
   height: 23px;
   font-family: Abel;
   font-style: normal;
@@ -71,4 +69,5 @@
   height: 50px;
   width: 50px;
   margin-top: 10px;
+  margin-left: 80%;
 }

@@ -1,13 +1,11 @@
 import "./RoughProfile.css";
-import { useStudentContext } from "../../../context/StudentsContext";
 
-const RoughProfile = () => {
-  const context = useStudentContext();
+const RoughProfile = (props) => {
   return (
     <div className={"RoughProfile"}>
       <img
         id={"ProfileImg"}
-        src={context.nowStudentData.profileImg || ""}
+        src={props.nowStudentData.profileImg || ""}
         alt="No Image"
       />
       <ul className={"NameNGrade"}>
@@ -17,7 +15,7 @@ const RoughProfile = () => {
             disabled={true}
             className={"IDInput"}
             id={"IDName"}
-            value={context.nowStudentData.name || ""}
+            value={props.nowStudentData.name || ""}
           />
         </li>
         <li className={"IDLine"}>
@@ -26,7 +24,7 @@ const RoughProfile = () => {
             disabled={true}
             className={"IDInput"}
             id={"IDGrade"}
-            value={context.nowStudentData.grade || ""}
+            value={props.nowStudentData.grade || ""}
           />
         </li>
       </ul>

@@ -3,37 +3,24 @@ import { useState } from "react";
 import { useStudentContext } from "../../../context/StudentsContext";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNetworkContext } from "../../../context/NetworkContext";
 
 const StudentAddModal = (props) => {
   const studentContext = useStudentContext();
-  const networkContext = useNetworkContext();
   const open = props.modalOpen;
   const [name, setName] = useState();
   const [grade, setGrade] = useState();
   const onClick = () => {
     axios
       .post(
-        networkContext.baseURL + "/student",
+          "/student",
         {
           name: name,
           grade: Number(grade),
-        },
-        networkContext.config
+        }
       )
       .then((response) => {
         props.closeModal();
-        studentContext.setNowStudentData({
-          //현재 선택된 학생의 데이터, id 값만 임의로 부여해둠.
-          id: response.data.id,
-          name: name,
-          grade: grade,
-          profileImg: null,
-          email: "",
-          phone: "",
-          major: "",
-          locked: false,
-        });
+        studentContext.setNowStudentID(response.data.id);
         //새로고침을 해줘야 리렌더가 일어남.
       })
       .catch((error) => {
@@ -81,7 +68,6 @@ const StudentAddModal = (props) => {
             </li>
           </ul>
           <div className={"Button"}>
-            <div></div>
             <button className={"close"} onClick={props.closeModal}>
               닫기
             </button>

@@ -22,6 +22,13 @@ const Students = () => {
   const [addModalOpen, setAddModalOpen] = useState(false); // 모달은 기본값이 꺼진 상태로
   const [popUpOpen, setPopUpOpen] = useState(); // 모달은 기본값이 꺼진 상태로
   const [search, setSearch] = useState(""); //검색창 입력 값 받아옴
+  const [nowStudentData, setNowStudentData] = useState({
+    //현재 선택된 학생의 데이터, id 값만 임의로 부여해둠.
+    id: null,
+    name: null,
+    grade: null,
+    profileImg: null,
+  });
   const openAddModal = () => {
     //제목이 곧 내용
     setAddModalOpen(true);
@@ -50,28 +57,40 @@ const Students = () => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("isLogIn") !== "true") {
-      history.push("/login");
-    }
     axios
-      .get(networkContext.baseURL + "/student", networkContext.config)
+      .get("/student")
       .then((response) => {
         studentContext.setStudentData(response.data);
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
+    if(studentContext.nowStudentID !== null) {
+      axios
+          .get("/student/" + studentContext.nowStudentID)
+          .then((response) => {
+            setNowStudentData(response.data);
+          })
+          .catch((error)=>{
+            toast(error.response.data.message)
+          })
+    }
+  }, [studentContext.nowStudentID]);
 
+  useEffect(()=>{
+    if (networkContext.token === undefined || networkContext.token === 'null') {
+      history.push("/login");
+    }
     if (getCookie("popUpPostpone") === "Y") {
       setPopUpOpen(false);
     } else {
       setPopUpOpen(true);
     }
-  }, []);
+  }, [])
 
   return (
     <div className={"Students"}>
-      <StudentAddModal closeModal={closeAddModal} modalOpen={addModalOpen} />
+      <StudentAddModal setNowStudentData={setNowStudentData} closeModal={closeAddModal} modalOpen={addModalOpen} />
       <PopUp popUpOpen={popUpOpen} closePopUp={closePopUp}></PopUp>
       <Header />
       <DashBoard />
@@ -82,18 +101,13 @@ const Students = () => {
             setSearch={setSearch}
             openModal={openAddModal}
           />
-          <Table search={search} />
+          <Table setNowStudentData={setNowStudentData} nowStudentData={nowStudentData} search={search} />
         </div>
         <div className={"Right"}>
-          {studentContext.nowStudentData.id === null ? (
-            <DetailNotSelected /> //현재 선택된 학생이 있는지 판단
-          ) : (
-            <Detail />
-          )}
+            <Detail nowStudentData={nowStudentData} />
         </div>
         {/*선택된 학생이 있으면 Detail 표시, 없으면 메세지창을 표시*/}
       </div>
-      <ToastContainer position="bottom-right" />
     </div>
   );
 };

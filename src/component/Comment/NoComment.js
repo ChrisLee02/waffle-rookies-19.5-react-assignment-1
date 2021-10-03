@@ -3,10 +3,8 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNetworkContext } from "../../context/NetworkContext";
 
 const NoComment = (props) => {
-  const networkContext = useNetworkContext();
   const params = useParams();
   const id = params.id;
   const [commentMessage, setCommentMessage] = useState("");
@@ -14,9 +12,8 @@ const NoComment = (props) => {
   const commentAdd = () => {
     axios
       .post(
-        networkContext.baseURL + "/student/" + id + "/comment",
+        "/student/" + id + "/comment",
         { content: commentMessage },
-        networkContext.config
       )
       .then(() => {
         props.commentUpdate();
@@ -34,13 +31,11 @@ const NoComment = (props) => {
           댓글이 없어요 :(
         </p>
       </div>
-      <div className={"CommentInputBox"}>
+      <form onSubmit={(e)=>{
+        e.preventDefault();
+        commentAdd();
+      }} className={"CommentInputBox"}>
         <input
-          onKeyUp={(e) => {
-            if (e.key === "Enter") {
-              commentAdd();
-            }
-          }}
           value={commentMessage}
           onChange={(e) => {
             setCommentMessage(e.target.value);
@@ -49,10 +44,10 @@ const NoComment = (props) => {
           placeholder={"댓글을 작성하세요"}
           type="text"
         />
-        <button onClick={commentAdd} className={"CommentButton"}>
+        <button type={'submit'} className={"CommentButton"}>
           작성
         </button>
-      </div>
+      </form>
     </div>
   );
 };

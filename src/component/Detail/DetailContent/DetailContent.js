@@ -1,7 +1,7 @@
 import "./DetailContent.css";
 import { useStudentContext } from "../../../context/StudentsContext";
 
-const DetailContent = () => {
+const DetailContent = (props) => {
   const context = useStudentContext();
   return (
     <ul className={"DetailContent"}>
@@ -10,7 +10,7 @@ const DetailContent = () => {
         <input
           disabled={true}
           className={"DetailInput"}
-          value={context.nowStudentData.name}
+          value={props.nowStudentData.name}
         />
       </li>
       <li className={"Line"}>
@@ -18,7 +18,7 @@ const DetailContent = () => {
         <input
           disabled={true}
           className={"DetailInput"}
-          value={context.nowStudentData.grade}
+          value={props.nowStudentData.grade}
         />
       </li>
     </ul>

@@ -21,14 +21,13 @@ const LoginForm = () => {
   const onClick = () => {
     axios
       .post(
-        "https://p04fpgjlo3.execute-api.ap-northeast-2.amazonaws.com/v1/auth/login",
+        "/auth/login",
         account
       )
       .then((response) => {
         console.log("성공");
         localStorage.setItem("JWT", response.data.access_token);
-        localStorage.setItem("isLogIn", true);
-        networkContext.setIsLogIn("true");
+        networkContext.setToken(response.data.access_token);
         history.push("/students");
       })
       .catch((error) => {
@@ -36,16 +35,14 @@ const LoginForm = () => {
       });
   };
   return (
-    <form className={"LoginForm"} action="" name={"IDPW"}>
+    <form onSubmit={(e)=>{
+        e.preventDefault();
+        onClick();
+    }} className={"LoginForm"} action="" name={"IDPW"}>
       <label className={"LoginLabel"} htmlFor={"LogInID"}>
         Username or email address
       </label>
       <input
-        onKeyUp={(e) => {
-          if (e.key === "Enter") {
-            onClick();
-          }
-        }}
         name={"username"}
         id={"LogInID"}
         type="text"
@@ -55,17 +52,12 @@ const LoginForm = () => {
         Password
       </label>
       <input
-        onKeyUp={(e) => {
-          if (e.key === "Enter") {
-            onClick();
-          }
-        }}
         name={"password"}
         id={"LogInPW"}
         type="password"
         onChange={onChangeAccount}
       />
-      <button type={"button"} onClick={onClick} id={"SignIn"}>
+      <button type={"submit"} onClick={onClick} id={"SignIn"}>
         Sign in
       </button>
     </form>

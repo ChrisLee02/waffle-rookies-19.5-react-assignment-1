@@ -1,31 +1,31 @@
-import "./IDHeader.css";
-import Arrow2 from "../../Data/Arrow2.svg";
-import { useStudentContext } from "../../context/StudentsContext";
-import { useHistory } from "react-router-dom";
+import './IDHeader.css';
+import {ReactComponent as Arrow2} from '../../Data/Arrow2.svg';
+import {useStudentContext} from '../../context/StudentsContext';
+import {Link, useHistory} from 'react-router-dom';
 
-const IDHeader = () => {
-  const context = useStudentContext();
-  const history = useHistory();
-  return (
-    <header className={"IDHeader"}>
-      <div
-        onClick={() => {
-          history.push("/students");
-          context.setStudentData(
-            context.studentData.map((student) =>
-              student.id === context.nowStudentData.id
-                ? { ...student, locked: context.nowStudentData.locked }
-                : student
-            )
-          );
-        }}
-        className={"Back"}
-      >
-        <img alt="" id={"Arrow"} src={Arrow2} height={"16px"} width={"16px"} />
-        학생 목록 페이지로
-      </div>
-    </header>
-  );
+const IDHeader = (props) => {
+    const context = useStudentContext();
+    const history = useHistory();
+    return (
+        <header className={'IDHeader'}>
+            <Link
+                onClick={() => {
+                    context.setStudentData(
+                        context.studentData.map((student) =>
+                            student.id === props.nowStudentData.id
+                                ? {...student, locked: props.nowStudentData.locked}
+                                : student
+                        )
+                    );
+                    context.setNowStudentID(props.nowStudentData.id);
+                }}
+                className={'Back'}
+                to={'/students'}>
+                <Arrow2 id={'Arrow'} height={'16px'} width={'16px'}></Arrow2>
+                학생 목록 페이지로
+            </Link>
+        </header>
+    );
 };
 
 export default IDHeader;

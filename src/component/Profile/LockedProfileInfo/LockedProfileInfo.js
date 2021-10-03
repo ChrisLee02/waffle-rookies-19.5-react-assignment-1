@@ -1,9 +1,7 @@
 import "./LockedProfileInfo.css";
-import { useStudentContext } from "../../../context/StudentsContext";
-import Locked from "../../../Data/Locked.svg";
+import {ReactComponent as Locked} from "../../../Data/Locked.svg";
 
-const LockedProfileInfo = () => {
-  const context = useStudentContext();
+const LockedProfileInfo = (props) => {
   return (
     <div className={"LockedProfileInfo"}>
       <ul className={"Infomation"}>
@@ -13,7 +11,7 @@ const LockedProfileInfo = () => {
             disabled={true}
             className={"InfoInput"}
             id={"Phone"}
-            value={context.nowStudentData.phone || ""}
+            value={props.nowStudentData.phone || ""}
           />
         </li>
 
@@ -24,7 +22,7 @@ const LockedProfileInfo = () => {
               className={"InfoInput"}
               id={"Email"}
               disabled={true}
-              value={context.nowStudentData.email || ""}
+              value={props.nowStudentData.email || ""}
             />
           </div>
         </li>
@@ -36,12 +34,12 @@ const LockedProfileInfo = () => {
             className={"InfoInput"}
             id={"Major"}
             onChange={(e) => {
-              context.setNowStudentData({
-                ...context.nowStudentData,
+              props.setNowStudentData({
+                ...props.nowStudentData,
                 major: e.target.value,
               });
             }}
-            value={context.nowStudentData.major || ""}
+            value={props.nowStudentData.major || ""}
           >
             <option value="">전공선택</option>
             <option value="frontend">frontend</option>
@@ -56,18 +54,17 @@ const LockedProfileInfo = () => {
           <input
             disabled={true}
             onChange={(e) => {
-              context.setNowStudentData({
-                ...context.nowStudentData,
+              props.setNowStudentData({
+                ...props.nowStudentData,
                 profileImg: e.target.value,
               });
             }}
             className={"InfoInput"}
-            value={context.nowStudentData.profileImg || ""}
+            value={props.nowStudentData.profileImg || ""}
           />
         </li>
       </ul>
-
-      <img src={Locked} width={"100px"} height={"100px"} />
+      <Locked width={"100px"} height={"100px"}/>
     </div>
   );
 };
