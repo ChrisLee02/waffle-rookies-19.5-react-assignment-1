@@ -1,27 +1,25 @@
 .LockedProfileInfo {
-    height: calc(100% - 380px);
-    border: 1px #D3D3D3 solid;
-    background: rgba(196, 196, 196, 0.44);
+  height: calc(100% - 380px);
+  border: 1px #d3d3d3 solid;
+  background: rgba(196, 196, 196, 0.44);
 }
-
 
 .InfoLine {
-    margin-top: 20px;
-    margin-right: calc(50% - 120px);
-    text-align: right;
-    list-style-type: none;
-
+  margin-top: 20px;
+  margin-right: calc(50% - 120px);
+  text-align: right;
+  list-style-type: none;
 }
 #Major {
-     width: 255px;
- }
+  width: 255px;
+}
 
 .InfoInput {
-    border: 1px solid #C2C2C2;
-    font-family: Abel;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 23px;
-    margin-left: 30px;
+  border: 1px solid #c2c2c2;
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  margin-left: 30px;
 }

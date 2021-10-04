@@ -1,31 +1,31 @@
 .LoginForm {
-    position: relative;
-    border: 1px black solid;
-    width: 300px;
-    border-radius: 5px;
-    padding-left: 20px;
-    background-color: #f6f8fa;
+  position: relative;
+  border: 1px black solid;
+  width: 300px;
+  border-radius: 5px;
+  padding-left: 20px;
+  background-color: #f6f8fa;
 }
 #LogInID {
-    width: 80%;
-    line-height: 20px;
-    border-radius: 7px;
+  width: 80%;
+  line-height: 20px;
+  border-radius: 7px;
 }
 #LogInPW {
-    width: 80%;
-    line-height: 20px;
-    border-radius: 7px;
+  width: 80%;
+  line-height: 20px;
+  border-radius: 7px;
 }
 
 .LoginLabel {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-#SignIn{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 85%;
-    height: 35px;
-    border-radius: 7px;
-    background-color: #2da44e;
+#SignIn {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 85%;
+  height: 35px;
+  border-radius: 7px;
+  background-color: #2da44e;
 }

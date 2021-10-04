@@ -1,48 +1,46 @@
 .ProfileInfo {
-    height: calc(100% - 380px);
-    border: 1px #D3D3D3 solid;
+  height: calc(100% - 380px);
+  border: 1px #d3d3d3 solid;
 }
 
 .Infomation {
-    padding-left: 0px;
-    margin-top: 27px;
+  padding-left: 0px;
+  margin-top: 27px;
 }
 .InfoLine {
-    margin-top: 20px;
-    margin-right: calc(50% - 120px);
-    text-align: right;
-    list-style-type: none;
+  margin-top: 20px;
+  margin-right: calc(50% - 120px);
+  text-align: right;
+  list-style-type: none;
 }
 #Major {
-    width: 255px;
+  width: 255px;
 }
 
 .InfoInput {
-    border: 1px solid #C2C2C2;
-    font-family: Abel;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 23px;
-    margin-left: 30px;
-    width: 250px;
-
-
+  border: 1px solid #c2c2c2;
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  margin-left: 30px;
+  width: 250px;
 }
 
 .Shell {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 
 .Shell::after {
-    content: "@waffle.hs.kr";
-    color: #979797;
-    font-family: sans-serif;
-    width: 1em;
-    height: 1em;
-    position: absolute;
-    top: 40%;
-    right: 90px;
-    transform: translateY(-50%);
+  content: "@waffle.hs.kr";
+  color: #979797;
+  font-family: sans-serif;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 40%;
+  right: 90px;
+  transform: translateY(-50%);
 }

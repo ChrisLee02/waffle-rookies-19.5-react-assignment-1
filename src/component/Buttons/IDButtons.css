@@ -1,0 +1,45 @@
+.IdButton {
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 42px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 10px;
+}
+
+.LockedIdButton {
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 42px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 10px;
+  background-color: #c4c4c4;
+}
+.LockedIdButton:hover {
+  cursor: default;
+  opacity: 1;
+}
+#Unlock:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.Lock {
+  background-color: #c4c4c4;
+}
+.Delete {
+  background-color: #fcd8d8;
+}
+.Save {
+  background-color: #d3ffdd;
+}
+
+.IDButtons {
+  display: flex;
+  justify-content: flex-end;
+}

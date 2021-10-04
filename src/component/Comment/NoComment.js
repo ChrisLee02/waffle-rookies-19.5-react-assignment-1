@@ -1,13 +1,14 @@
-import "./Comment.css";
+import "./NoComment.css";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const Comment = (props) => {
+const NoComment = (props) => {
   const params = useParams();
   const id = params.id;
   const [commentMessage, setCommentMessage] = useState("");
+
   const commentAdd = () => {
     axios
       .post("/student/" + id + "/comment", { content: commentMessage })
@@ -22,14 +23,10 @@ const Comment = (props) => {
 
   return (
     <div>
-      <div className={props.comments.length === 0 ? "NoComment" : "CommentBox"}>
-        {props.comments.length === 0 ? (
-          <p id={"NoCommentText"} className={"Text"}>
-            댓글이 없어요 :(
-          </p>
-        ) : (
-          <ul className={"CommentList"}>{props.comments}</ul>
-        )}
+      <div className={"NoComment"}>
+        <p id={"NoCommentText"} className={"Text"}>
+          댓글이 없어요 :(
+        </p>
       </div>
       <form
         onSubmit={(e) => {
@@ -55,4 +52,4 @@ const Comment = (props) => {
   );
 };
 
-export default Comment;
+export default NoComment;

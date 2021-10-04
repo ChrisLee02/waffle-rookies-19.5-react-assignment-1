@@ -1,13 +1,12 @@
 .IDHeader {
-    width: 100%;
+  width: 100%;
 }
 
 .Back {
-    display: flex;
-    justify-content: left;
+  display: flex;
+  justify-content: left;
 }
 
-
 #Arrow {
-    margin-right: 10px;
+  margin-right: 10px;
 }

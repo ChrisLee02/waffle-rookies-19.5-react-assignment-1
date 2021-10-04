@@ -1,30 +1,28 @@
-
 .StudentID {
-    margin-left: 43px;
-    margin-right: 43px;
-    margin-top: 34px;
-    text-align: center;
+  margin-left: 43px;
+  margin-right: 43px;
+  margin-top: 34px;
+  text-align: center;
 }
 
 .IDTitle {
-    width: 100px;
-    height: 40px;
-    background: #C4C4C4;
-    margin-top: 70px;
-    padding-top: 15px;
+  width: 100px;
+  height: 40px;
+  background: #c4c4c4;
+  margin-top: 70px;
+  padding-top: 15px;
 }
 
 .IDDown {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .IDLeft {
-    padding-right: 25px;
-
+  padding-right: 25px;
 }
 
 .IDRight {
-    padding-left: 25px;
+  padding-left: 25px;
 }

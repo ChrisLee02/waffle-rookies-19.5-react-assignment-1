@@ -1,17 +1,30 @@
 .Header {
-    display: flex;
-    width: 80%;
-    height: 76px;
-    top: 34px;
+  display: flex;
+  height: 76px;
+  top: 34px;
+  justify-content: space-between;
+}
+
+.HeaderLeft {
+  display: flex;
+}
+.LogOut {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #e0e0e0;
+  height: 80%;
+  border: none;
+  border-radius: 5px;
+}
+.LogOut:hover {
+  background-color: darkgrey;
 }
 
 #Title {
-    height: 31px;
-    margin-left: 22px;
-
-    font-family: Abel;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 31px;
+  height: 31px;
+  margin-left: 22px;
+  font-family: Abel;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 31px;
 }
