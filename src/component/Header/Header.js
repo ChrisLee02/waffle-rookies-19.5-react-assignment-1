@@ -18,7 +18,7 @@ const Header = () => {
         className={"LogOut"}
         onClick={() => {
           localStorage.setItem("JWT", null);
-          networkContext.setToken(null);
+          networkContext.setToken(undefined);
           history.push("/login");
         }}
       >
