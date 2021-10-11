@@ -22,7 +22,6 @@ const LoginForm = () => {
     axios
       .post("/auth/login", account)
       .then((response) => {
-        console.log("성공");
         localStorage.setItem("JWT", response.data.access_token);
         networkContext.setToken(response.data.access_token);
         history.push("/students");
@@ -59,7 +58,7 @@ const LoginForm = () => {
         type="password"
         onChange={onChangeAccount}
       />
-      <button type={"submit"} onClick={onClick} id={"SignIn"}>
+      <button type={"submit"} id={"SignIn"}>
         Sign in
       </button>
     </form>

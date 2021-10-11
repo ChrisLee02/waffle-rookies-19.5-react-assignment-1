@@ -46,7 +46,6 @@ const StudentID = () => {
 
   const commentUpdate = () => {
     axios.get("/student/" + id + "/comment").then((response) => {
-      console.log(response.data);
       setComments(
         response.data.map((comment) => {
           return (
@@ -87,7 +86,6 @@ const StudentID = () => {
     axios
       .get("/student/" + id)
       .then((response) => {
-        console.log("ID 성공");
         setNowStudentData(response.data);
       })
       .catch((error) => {
