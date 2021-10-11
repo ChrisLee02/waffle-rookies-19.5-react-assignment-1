@@ -28,22 +28,17 @@ const StudentAddModal = (props) => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "closeModal modal"}>
       {open ? (
-        <div className={open ? "openModalInside" : "closeModalInside"}>
+        <form onSubmit={(e)=>{
+          e.preventDefault();
+          onClick();
+        }} className={open ? "openModalInside" : "closeModalInside"}>
           <ul className={"ModalContent"}>
             {" "}
             {/*이 부분 코드는 DetailContents 재사용*/}
             <li className={"ModalLine"} id={"Name"}>
               이름{" "}
               <input
-                onKeyUp={(e) => {
-                  if (e.key === "Enter") {
-                    onClick();
-                  }
-                }}
                 onChange={(e) => {
-                  {
-                    /*입력창 내부에 변화가 생기면, state변경*/
-                  }
                   setName(e.target.value);
                 }}
                 className={"ModalInput"}
@@ -52,11 +47,6 @@ const StudentAddModal = (props) => {
             <li className={"ModalLine"} id={"Grade"}>
               학년{" "}
               <input
-                onKeyUp={(e) => {
-                  if (e.key === "Enter") {
-                    onClick();
-                  }
-                }}
                 onChange={(e) => {
                   setGrade(Number(e.target.value));
                 }}
@@ -65,15 +55,15 @@ const StudentAddModal = (props) => {
             </li>
           </ul>
           <div className={"Button"}>
-            <button className={"close"} onClick={props.closeModal}>
+            <button className={"close"} type={'button'} onClick={props.closeModal}>
               닫기
             </button>
             <div></div>
-            <button className={"add"} onClick={onClick}>
+            <button className={"add"} type={'submit'}>
               추가
             </button>
           </div>
-        </div>
+        </form>
       ) : null}
     </div>
   );
