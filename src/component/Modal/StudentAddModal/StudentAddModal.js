@@ -18,6 +18,8 @@ const StudentAddModal = (props) => {
       .then((response) => {
         props.closeModal();
         studentContext.setNowStudentID(response.data.id);
+        setName('');
+        setGrade('');
         //새로고침을 해줘야 리렌더가 일어남.
       })
       .catch((error) => {
