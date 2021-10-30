@@ -5,18 +5,25 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNetworkContext } from "../../../context/NetworkContext";
 
+interface LoginForm {
+    username: string,
+    password: string,
+}
+
 const LoginForm = () => {
   const networkContext = useNetworkContext();
-  const [account, setAccount] = useState({
+  const [account, setAccount] = useState<LoginForm>({
     username: "",
     password: "",
   });
+
   const onChangeAccount = (e) => {
     setAccount({
       ...account,
       [e.target.name]: e.target.value, // 귀찮으니까...
     });
   };
+
   const history = useHistory();
   const onClick = () => {
     axios
@@ -30,6 +37,7 @@ const LoginForm = () => {
         toast.error(error.response.data.message);
       });
   };
+
   return (
     <form
       onSubmit={(e) => {

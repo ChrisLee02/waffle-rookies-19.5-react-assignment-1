@@ -45,7 +45,34 @@ const StudentID = () => {
     const id = params.id;
     const [page, setPage] = useState(1);
     const commentUpdate = () => {
-        axios.get('/student/' + id + '/comment?page=' + page.toString()).then((response) => {
+        axios
+            .get('/student/' + id + '/comment?page=1')
+            .then((response)=>{
+                setComments([<li key={response.data.data[0].id} className={'Comment'}>
+                    <div>{response.data.data[0].content}</div>
+                    <span>
+                {dayjs(response.data.data[0].datetime).format('MM월 DD일 HH시 mm분')}
+              </span>
+                </li>,...comments])
+            })
+
+        /*axios.get('/student/' + id + '/comment?page=' + Page.toString()).then((response) => {
+            setComments([...comments, response.data.data.map((comment) => {
+                    return (
+                        <li key={comment.id} className={'Comment'}>
+                            <div>{comment.content}</div>
+                            <span>
+                {dayjs(comment.datetime).format('MM월 DD일 HH시 mm분')}
+              </span>
+                        </li>
+                    );
+                })]
+            );
+        });*/
+    };
+
+    const commentPageUpdate = (Page) => {
+        axios.get('/student/' + id + '/comment?page=' + Page.toString()).then((response) => {
             setComments([...comments, response.data.data.map((comment) => {
                     return (
                         <li key={comment.id} className={'Comment'}>
@@ -73,9 +100,9 @@ const StudentID = () => {
                     locked: nowStudentData.locked ? false : true,
                 })
             )
-            .then(() => commentUpdate(page))
+            .then(() => commentUpdate())
             .catch((error) => {
-                toast(error.response.data.message);
+                toast.error(error.response.data.message);
             });
     };
     useEffect(() => {
@@ -98,11 +125,11 @@ const StudentID = () => {
             .catch((error)=>{
                 localStorage.setItem("JWT", null);
                 networkContext.setToken(undefined);
-                toast(error.response.data.message);
+                toast.error(error.response.data.message);
                 history.push('/login');
             });
 
-        commentUpdate(page);
+        commentPageUpdate(1);
     }, []);
 
     /*useEffect(() => {
@@ -145,9 +172,11 @@ const StudentID = () => {
                     <Comment
                         setComments={setComments}
                         commentUpdate={commentUpdate}
+                        commentPageUpdate={commentPageUpdate}
                         comments={comments}
                         setPage={setPage}
                         page={page}
+                        nowStudentData={nowStudentData}
                     />
                 </div>
             </div>
