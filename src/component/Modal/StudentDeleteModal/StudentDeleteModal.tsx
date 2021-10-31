@@ -7,9 +7,13 @@ import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const StudentDeleteModal = (props) => {
+interface params {
+  id: string;
+}
+
+const StudentDeleteModal = (props:any) => {
   const open = props.modalOpen;
-  const params = useParams();
+  const params = useParams<params>();
   const id = params.id;
   const history = useHistory();
   const studentContext = useStudentContext();
@@ -37,6 +41,7 @@ const StudentDeleteModal = (props) => {
                   .then((response) => {
                     props.closeModal();
                     history.push("/students"); //새로고침을 해줘야 리렌더가 일어남.
+                    toast('삭제되었습니다');
                   })
                   .catch((error) => {
                     toast.error(error.response.data.message);

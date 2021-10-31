@@ -2,18 +2,18 @@ import { ReactComponent as UnLock } from "../../Data/UnLocked.svg";
 import { ReactComponent as Lock } from "../../Data/Locked.svg";
 import { ReactComponent as Delete } from "../../Data/Delete.svg";
 import { ReactComponent as Save } from "../../Data/Save.svg";
-import "./IDButtons.css";
+import styles from "./IDButtons.module.scss";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const IDButtons = (props) => {
   return (
-    <div className={"IDButtons"}>
+    <div className={styles.IDButtons}>
       <button
         onClick={props.controlLock}
         id={props.nowStudentData.locked ? "Unlock" : null}
         className={
-          props.nowStudentData.locked ? "LockedIdButton" : "IdButton Lock"
+          props.nowStudentData.locked ? styles.LockedIdButton : styles.Lock
         }
       >
         {props.nowStudentData.locked ? <UnLock /> : <Lock />}
@@ -23,7 +23,7 @@ const IDButtons = (props) => {
         disabled={props.nowStudentData.locked}
         onClick={props.openModal}
         className={
-          props.nowStudentData.locked ? "LockedIdButton" : "IdButton Delete"
+          props.nowStudentData.locked ? styles.LockedIdButton : styles.Delete
         }
       >
         <Delete /> 삭제
@@ -46,7 +46,7 @@ const IDButtons = (props) => {
         }}
         disabled={props.nowStudentData.locked}
         className={
-          props.nowStudentData.locked ? "LockedIdButton" : "IdButton Save"
+          props.nowStudentData.locked ? styles.LockedIdButton : styles.Save
         }
       >
         <Save /> 저장

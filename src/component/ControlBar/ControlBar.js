@@ -1,4 +1,4 @@
-import './ControlBar.css';
+import styles from './ControlBar.module.css';
 import {toast} from 'react-toastify';
 import {useState} from 'react';
 
@@ -7,8 +7,8 @@ const ControlBar = (props) => {
     const [gradeSearch, setGradeSearch] = useState(params.get('grade'));
     const [nameSearch, setNameSearch] = useState(params.get('name'));
     return (
-        <form className={'Search'}>
-                <span className={'InputSearchWrap'}>
+        <form className={styles.Search}>
+                <span className={styles.InputSearchWrap}>
                     <input
                         value={nameSearch}
                         onChange={(e) => {
@@ -17,7 +17,7 @@ const ControlBar = (props) => {
                         }}
                         placeholder={'이름'}
                         type={'text'}
-                        className={'InputSearch'}
+                        className={styles.InputSearch}
                         name={'name'}
                     />
                     <input
@@ -32,7 +32,7 @@ const ControlBar = (props) => {
                         }}
                         placeholder={'학년'}
                         type={'text'}
-                        className={'InputSearch'}
+                        className={styles.InputSearch}
                         name={'grade'}
                     />
                 </span>

@@ -4,11 +4,11 @@ import { useStudentContext } from "../../../context/StudentsContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const StudentAddModal = (props) => {
+const StudentAddModal = (props:any) => {
   const studentContext = useStudentContext();
   const open = props.modalOpen;
-  const [name, setName] = useState();
-  const [grade, setGrade] = useState();
+  const [name, setName] = useState<string>();
+  const [grade, setGrade] = useState<string>();
   const onClick = () => {
     axios
       .post("/student", {
@@ -20,6 +20,7 @@ const StudentAddModal = (props) => {
         studentContext.setNowStudentID(response.data.id);
         setName('');
         setGrade('');
+        toast('추가되었습니다.');
         //새로고침을 해줘야 리렌더가 일어남.
       })
       .catch((error) => {
@@ -50,7 +51,7 @@ const StudentAddModal = (props) => {
               학년{" "}
               <input
                 onChange={(e) => {
-                  setGrade(Number(e.target.value));
+                  setGrade(e.target.value);
                 }}
                 className={"ModalInput"}
               />

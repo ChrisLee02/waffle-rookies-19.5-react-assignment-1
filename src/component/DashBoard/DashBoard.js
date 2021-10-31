@@ -1,4 +1,4 @@
-import './DashBoard.css';
+import styles from './DashBoard.module.scss';
 import {useStudentContext} from '../../context/StudentsContext';
 import {Pie, PieChart, Tooltip, BarChart} from 'recharts';
 import {useState, useEffect} from 'react';
@@ -53,19 +53,19 @@ const DashBoard = () => {
             })
 
         const interValid = setInterval(()=>{
-            axios.get('/student/stat')
-                .then((response)=>{
-                    setDashBoardTotalData(response.data.count);
-                })
+         //   axios.get('/student/stat')
+         //       .then((response)=>{
+         //           setDashBoardTotalData(response.data.count);
+         //       })
         }, 3000)
 
         return  ()=> clearInterval(interValid);
 
     },[]);
     return (
-        <div className={'DashBoard'}>
+        <div className={styles.DashBoard}>
             {context.studentData.length === 0 ? <p>학생 데이터 없음.</p> : (
-                <span className={'DashBoardContent'}>
+                <span className={styles.DashBoardContent}>
                     <PieChart width={400} height={174}>
                         <Pie
                             data={dashBoardPercentageData}
@@ -80,26 +80,25 @@ const DashBoard = () => {
                     </PieChart>
 
 
-                    <table className={'StudentHowMuch'}>
+                    <table className={styles.StudentHowMuch}>
                         <thead>
                             <tr>
-                                <th className={'StudentTableH'} scope={'cols'}>1학년</th>
-                                <th className={'StudentTableH'} scope={'cols'}>2학년</th>
-                                <th className={'StudentTableH'} scope={'cols'}>3학년</th>
+                                <th className={styles.StudentTableH} scope={'cols'}>1학년</th>
+                                <th className={styles.StudentTableH} scope={'cols'}>2학년</th>
+                                <th className={styles.StudentTableH} scope={'cols'}>3학년</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td className={'StudentTableD'}>{dashBoardTotalData['1']}</td>
-                                <td className={'StudentTableD'}>{dashBoardTotalData['2']}</td>
-                                <td className={'StudentTableD'}>{dashBoardTotalData['3']}</td>
+                                <td className={styles.StudentTableD}>{dashBoardTotalData['1']}</td>
+                                <td className={styles.StudentTableD}>{dashBoardTotalData['2']}</td>
+                                <td className={styles.StudentTableD}>{dashBoardTotalData['3']}</td>
                             </tr>
                         </tbody>
                     </table>
 
                 </span>
             )}
-
         </div>
     );
 };

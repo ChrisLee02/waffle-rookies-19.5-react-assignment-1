@@ -1,26 +1,28 @@
 import "./LoginForm.css";
-import { useHistory, Link } from "react-router-dom";
-import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import {ChangeEventHandler, FormEventHandler, useState} from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNetworkContext } from "../../../context/NetworkContext";
 
 interface LoginForm {
-    username: string,
-    password: string,
+  username: string;
+  password: string;
 }
+
 
 const LoginForm = () => {
   const networkContext = useNetworkContext();
+
   const [account, setAccount] = useState<LoginForm>({
     username: "",
     password: "",
   });
 
-  const onChangeAccount = (e) => {
+  const onChangeAccount:ChangeEventHandler<HTMLInputElement> = (e) => {
     setAccount({
       ...account,
-      [e.target.name]: e.target.value, // 귀찮으니까...
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -40,7 +42,7 @@ const LoginForm = () => {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onClick();
       }}

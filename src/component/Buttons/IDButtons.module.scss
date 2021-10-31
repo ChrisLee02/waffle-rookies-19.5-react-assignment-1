@@ -1,3 +1,7 @@
+$grey: #c4c4c4;
+$pink: #fcd8d8;
+$green: #d3ffdd;
+
 .IdButton {
   width: 100px;
   height: 50px;
@@ -15,10 +19,10 @@
   border: none;
   border-radius: 10px;
   margin-left: 42px;
+  padding-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding-top: 10px;
-  background-color: #c4c4c4;
+  background-color: $grey;
 }
 .LockedIdButton:hover {
   cursor: default;
@@ -30,13 +34,16 @@
 }
 
 .Lock {
-  background-color: #c4c4c4;
+  @extend .IdButton;
+  background-color: $grey;
 }
 .Delete {
-  background-color: #fcd8d8;
+  @extend .IdButton;
+  background-color: $pink;
 }
 .Save {
-  background-color: #d3ffdd;
+  @extend .IdButton;
+  background-color: $green;
 }
 
 .IDButtons {
