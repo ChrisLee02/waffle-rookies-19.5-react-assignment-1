@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import dayjs from "dayjs";
+import throttle from 'lodash'
 
 const Comment = (props) => {
   const params = useParams();
@@ -23,7 +23,7 @@ const Comment = (props) => {
       });
   };
 
-  const handleScroll = () => {
+  const handleScroll = throttle( () => {
     //
     if (
       -1 <
@@ -38,7 +38,8 @@ const Comment = (props) => {
     ) {
       props.commentPageUpdate(props.page);
     }
-  };
+  },300
+)
   return (
     <div>
       {props.comments.length === 0 ? (
