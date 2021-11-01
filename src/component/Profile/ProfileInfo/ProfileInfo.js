@@ -1,5 +1,5 @@
 import "./ProfileInfo.css";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 
 const ProfileInfo = (props) => {
   const emailCut = () => {
@@ -11,8 +11,11 @@ const ProfileInfo = (props) => {
   };
 
   const setPhoneNum = (e) => {
-    if(!/[^0-9-]/.test(e.target.value)){
-      props.setNowStudentData({ ...props.nowStudentData, phone: e.target.value });
+    if (!/[^0-9-]/.test(e.target.value)) {
+      props.setNowStudentData({
+        ...props.nowStudentData,
+        phone: e.target.value,
+      });
       if (e.target.value.length === 4) {
         if (e.target.value[3] === "-") {
           props.setNowStudentData({
@@ -40,8 +43,6 @@ const ProfileInfo = (props) => {
         }
       }
     }
-
-
   };
 
   return (
@@ -54,7 +55,6 @@ const ProfileInfo = (props) => {
             className={"InfoInput"}
             id={"Phone"}
             value={props.nowStudentData.phone || ""}
-
             onChange={(e) => {
               setPhoneNum(e);
             }}
@@ -68,15 +68,14 @@ const ProfileInfo = (props) => {
               id={"Email"}
               value={emailCut() || ""}
               onChange={(e) => {
-                if(/[@ ]/.test(e.target.value)){
-                  toast.error('@와 공백은 입력하실 수 없습니다.');
-                }
-                else{
+                if (/[@ ]/.test(e.target.value)) {
+                  toast.error("@와 공백은 입력하실 수 없습니다.");
+                } else {
                   props.setNowStudentData({
-                  ...props.nowStudentData,
-                  email: e.target.value + "@waffle.hs.kr",
-                });}
-
+                    ...props.nowStudentData,
+                    email: e.target.value + "@waffle.hs.kr",
+                  });
+                }
               }}
             />
           </div>
@@ -110,7 +109,6 @@ const ProfileInfo = (props) => {
                 ...props.nowStudentData,
                 profileImg: e.target.value,
               });
-
             }}
             className={"InfoInput"}
             value={props.nowStudentData.profileImg || ""}

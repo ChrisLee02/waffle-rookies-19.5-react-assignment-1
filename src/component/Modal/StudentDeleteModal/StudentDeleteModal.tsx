@@ -11,7 +11,7 @@ interface params {
   id: string;
 }
 
-const StudentDeleteModal = (props:any) => {
+const StudentDeleteModal = (props: any) => {
   const open = props.modalOpen;
   const params = useParams<params>();
   const id = params.id;
@@ -41,7 +41,7 @@ const StudentDeleteModal = (props:any) => {
                   .then((response) => {
                     props.closeModal();
                     history.push("/students"); //새로고침을 해줘야 리렌더가 일어남.
-                    toast('삭제되었습니다');
+                    toast("삭제되었습니다");
                   })
                   .catch((error) => {
                     toast.error(error.response.data.message);

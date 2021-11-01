@@ -4,12 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { StudentContextProvider } from "./context/StudentsContext";
-import {NetworkContextProvider} from './context/NetworkContext';
+import { NetworkContextProvider } from "./context/NetworkContext";
 
 import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
-
   <StudentContextProvider>
     <NetworkContextProvider>
       <App />

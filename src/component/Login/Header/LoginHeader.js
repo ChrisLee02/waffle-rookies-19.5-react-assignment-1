@@ -1,6 +1,6 @@
 //import "./LoginHeader.css";
 import { ReactComponent as Waffle } from "../../../Data/Waffle.svg";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Header = styled.header`
   margin-top: 100px;

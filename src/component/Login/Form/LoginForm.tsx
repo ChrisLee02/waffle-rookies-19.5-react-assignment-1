@@ -1,6 +1,6 @@
 import "./LoginForm.css";
 import { useHistory } from "react-router-dom";
-import {ChangeEventHandler, FormEventHandler, useState} from "react";
+import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNetworkContext } from "../../../context/NetworkContext";
@@ -10,7 +10,6 @@ interface LoginForm {
   password: string;
 }
 
-
 const LoginForm = () => {
   const networkContext = useNetworkContext();
 
@@ -19,7 +18,7 @@ const LoginForm = () => {
     password: "",
   });
 
-  const onChangeAccount:ChangeEventHandler<HTMLInputElement> = (e) => {
+  const onChangeAccount: ChangeEventHandler<HTMLInputElement> = (e) => {
     setAccount({
       ...account,
       [e.target.name]: e.target.value,

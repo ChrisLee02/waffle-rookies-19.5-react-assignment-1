@@ -41,7 +41,7 @@ const IDButtons = (props) => {
               props.commentUpdate();
             })
             .catch((error) => {
-              toast(error.response.data.message);
+              toast.error(error.response.data.message);
             });
         }}
         disabled={props.nowStudentData.locked}

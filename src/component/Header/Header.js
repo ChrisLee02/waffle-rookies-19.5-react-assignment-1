@@ -2,7 +2,7 @@
 import { ReactComponent as Waffle } from "../../Data/Waffle.svg";
 import { useHistory } from "react-router-dom";
 import { useNetworkContext } from "../../context/NetworkContext";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const HeaderComponent = styled.header`
   display: flex;
@@ -35,8 +35,6 @@ const LogOut = styled.button`
     background-color: darkgrey;
   }
 `;
-
-
 
 const Header = () => {
   const networkContext = useNetworkContext();

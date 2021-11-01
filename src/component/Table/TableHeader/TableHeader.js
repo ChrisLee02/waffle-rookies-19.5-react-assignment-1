@@ -1,5 +1,5 @@
 import "./TableHeader.css";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const TableHeaderComponent = styled.div`
   height: 59px;
@@ -18,7 +18,7 @@ const HName = styled.div`
   font-weight: normal;
   line-height: 23px;
   text-align: center;
-`
+`;
 const HGrade = styled.div`
   font-size: 20px;
   margin-top: 15px;

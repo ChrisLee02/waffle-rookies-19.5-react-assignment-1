@@ -4,7 +4,7 @@ import { useStudentContext } from "../../../context/StudentsContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const StudentAddModal = (props:any) => {
+const StudentAddModal = (props: any) => {
   const studentContext = useStudentContext();
   const open = props.modalOpen;
   const [name, setName] = useState<string>();
@@ -18,9 +18,9 @@ const StudentAddModal = (props:any) => {
       .then((response) => {
         props.closeModal();
         studentContext.setNowStudentID(response.data.id);
-        setName('');
-        setGrade('');
-        toast('추가되었습니다.');
+        setName("");
+        setGrade("");
+        toast("추가되었습니다.");
         //새로고침을 해줘야 리렌더가 일어남.
       })
       .catch((error) => {
@@ -31,10 +31,13 @@ const StudentAddModal = (props:any) => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "closeModal modal"}>
       {open ? (
-        <form onSubmit={(e)=>{
-          e.preventDefault();
-          onClick();
-        }} className={open ? "openModalInside" : "closeModalInside"}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onClick();
+          }}
+          className={open ? "openModalInside" : "closeModalInside"}
+        >
           <ul className={"ModalContent"}>
             {" "}
             {/*이 부분 코드는 DetailContents 재사용*/}
@@ -58,11 +61,15 @@ const StudentAddModal = (props:any) => {
             </li>
           </ul>
           <div className={"Button"}>
-            <button className={"close"} type={'button'} onClick={props.closeModal}>
+            <button
+              className={"close"}
+              type={"button"}
+              onClick={props.closeModal}
+            >
               닫기
             </button>
             <div></div>
-            <button className={"add"} type={'submit'}>
+            <button className={"add"} type={"submit"}>
               추가
             </button>
           </div>

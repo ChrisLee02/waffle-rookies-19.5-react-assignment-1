@@ -57,7 +57,8 @@ const Students = () => {
     setPopUpOpen(false);
   };
 
-  useEffect(() => { //선택된 학생 데이터가 바뀌었을 때만 실행
+  useEffect(() => {
+    //선택된 학생 데이터가 바뀌었을 때만 실행
     axios
       .get("/student")
       .then((response) => {
@@ -73,7 +74,7 @@ const Students = () => {
           setNowStudentData(response.data);
         })
         .catch((error) => {
-          toast(error.response.data.message);
+          toast.error(error.response.data.message);
         });
     }
   }, [studentContext.nowStudentID]);
@@ -82,14 +83,12 @@ const Students = () => {
     if (networkContext.token === undefined || networkContext.token === "null") {
       history.push("/login");
     }
-    axios
-        .get("/auth/check_token")
-        .catch((error)=>{
-          localStorage.setItem("JWT", null);
-          networkContext.setToken(undefined);
-          toast(error.response.data.message);
-          history.push('/login');
-        });
+    axios.get("/auth/check_token").catch((error) => {
+      localStorage.setItem("JWT", null);
+      networkContext.setToken(undefined);
+      toast.error(error.response.data.message);
+      history.push("/login");
+    });
     if (getCookie("popUpPostpone") === "Y") {
       setPopUpOpen(false);
     } else {
@@ -119,7 +118,9 @@ const Students = () => {
             setNowStudentData={setNowStudentData}
             nowStudentData={nowStudentData}
           />
-          <button className={'AddButton'} onClick={openAddModal}>추가</button>
+          <button className={"AddButton"} onClick={openAddModal}>
+            추가
+          </button>
         </div>
         <div className={"Right"}>
           <Detail nowStudentData={nowStudentData} />
