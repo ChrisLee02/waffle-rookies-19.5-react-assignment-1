@@ -1,12 +1,14 @@
 import "./Comment.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import throttle from 'lodash'
 
 const Comment = (props) => {
   const params = useParams();
   const id = params.id;
+  const ulRef = useRef();
   const [commentMessage, setCommentMessage] = useState("");
   const commentAdd = () => {
     axios
@@ -14,24 +16,46 @@ const Comment = (props) => {
       .then(() => {
         props.commentUpdate();
         setCommentMessage("");
+        ulRef.current.scrollTo(0, 0);
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
   };
 
+  const handleScroll = throttle( () => {
+    //
+    if (
+      -1 <
+        ulRef.current.clientHeight +
+          ulRef.current.scrollTop -
+          ulRef.current.scrollHeight &&
+      ulRef.current.clientHeight +
+        ulRef.current.scrollTop -
+        ulRef.current.scrollHeight <
+        1 &&
+      props.page !== null
+    ) {
+      props.commentpageupDate(props.page);
+    }
+  },300
+)
   return (
     <div>
-      <div className={props.comments.length === 0 ? "NoComment" : "CommentBox"}>
-        {props.comments.length === 0 ? (
-          <p id={"NoCommentText"} className={"Text"}>
-            댓글이 없어요 :(
-          </p>
-        ) : (
-          <ul className={"CommentList"}>{props.comments}</ul>
-        )}
-      </div>
+      {props.comments.length === 0 ? (
+        <p className={"NoComment Text"}>댓글이 없어요 :(</p>
+      ) : (
+        <ul
+          ref={ulRef}
+          onScroll={handleScroll}
+          className={"CommentBox"}
+          id={"CommentList"}
+        >
+          {props.comments}
+        </ul>
+      )}
       <form
+        disabled={props.nowStudentData.locked}
         onSubmit={(e) => {
           e.preventDefault();
           commentAdd();
@@ -39,6 +63,7 @@ const Comment = (props) => {
         className={"CommentInputBox"}
       >
         <input
+          disabled={props.nowStudentData.locked}
           value={commentMessage}
           onChange={(e) => {
             setCommentMessage(e.target.value);
@@ -47,7 +72,11 @@ const Comment = (props) => {
           placeholder={"댓글을 작성하세요"}
           type="text"
         />
-        <button type={"submit"} className={"CommentButton"}>
+        <button
+          disabled={props.nowStudentData.locked}
+          type={"submit"}
+          className={"CommentButton"}
+        >
           작성
         </button>
       </form>

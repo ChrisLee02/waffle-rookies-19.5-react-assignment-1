@@ -43,22 +43,56 @@ const StudentID = () => {
   };
   const params = useParams();
   const id = params.id;
-
+  const [page, setPage] = useState(1);
   const commentUpdate = () => {
-    axios.get("/student/" + id + "/comment").then((response) => {
-      setComments(
-        response.data.map((comment) => {
-          return (
-            <li key={comment.id} className={"Comment"}>
-              <div>{comment.content}</div>
-              <span>
-                {dayjs(comment.datetime).format("MM월 DD일 HH시 mm분")}
-              </span>
-            </li>
-          );
-        })
-      );
+    axios.get("/student/" + id + "/comment?page=1").then((response) => {
+      setComments([
+        <li key={response.data.data[0].id} className={"Comment"}>
+          <div>{response.data.data[0].content}</div>
+          <span>
+            {dayjs(response.data.data[0].datetime).format(
+              "MM월 DD일 HH시 mm분"
+            )}
+          </span>
+        </li>,
+        ...comments,
+      ]);
     });
+
+    /*axios.get('/student/' + id + '/comment?page=' + Page.toString()).then((response) => {
+            setComments([...comments, response.data.data.map((comment) => {
+                    return (
+                        <li key={comment.id} className={'Comment'}>
+                            <div>{comment.content}</div>
+                            <span>
+                {dayjs(comment.datetime).format('MM월 DD일 HH시 mm분')}
+              </span>
+                        </li>
+                    );
+                })]
+            );
+        });*/
+  };
+
+  const commentpageupDate = (Page) => {
+    axios
+      .get("/student/" + id + "/comment?page=" + Page.toString())
+      .then((response) => {
+        setComments([
+          ...comments,
+          response.data.data.map((comment) => {
+            return (
+              <li key={comment.id} className={"Comment"}>
+                <div>{comment.content}</div>
+                <span>
+                  {dayjs(comment.datetime).format("MM월 DD일 HH시 mm분")}
+                </span>
+              </li>
+            );
+          }),
+        ]);
+        setPage(response.data.next);
+      });
   };
 
   const controlLock = () => {
@@ -75,30 +109,43 @@ const StudentID = () => {
       )
       .then(() => commentUpdate())
       .catch((error) => {
-        toast(error.response.data.message);
+        toast.error(error.response.data.message);
       });
   };
-
   useEffect(() => {
     if (networkContext.token === "null" || networkContext.token === undefined) {
       history.push("/login");
     }
     axios
-      .get("/student/" + id)
+      .get("/auth/check_token")
       .then((response) => {
-        setNowStudentData(response.data);
+        axios
+          .get("/student/" + id)
+          .then((response) => {
+            setNowStudentData(response.data);
+          })
+          .catch((error) => {
+            toast.error(error.response.data.message);
+            history.push("/students");
+          });
       })
       .catch((error) => {
+        localStorage.setItem("JWT", null);
+        networkContext.setToken(undefined);
         toast.error(error.response.data.message);
-        history.push("/students");
+        history.push("/login");
       });
-    commentUpdate();
+
+    commentpageupDate(1);
   }, []);
+
+  /*useEffect(() => {
+      commentUpdate(page);
+    }, [page]);*/
 
   return (
     <div className={"StudentID"}>
       <StudentDeleteModal
-        history={history}
         closeModal={closeModal}
         modalOpen={modalOpen}
         nowStudentData={nowStudentData}
@@ -131,7 +178,11 @@ const StudentID = () => {
           <Comment
             setComments={setComments}
             commentUpdate={commentUpdate}
+            commentpageupDate={commentpageupDate}
             comments={comments}
+            setPage={setPage}
+            page={page}
+            nowStudentData={nowStudentData}
           />
         </div>
       </div>

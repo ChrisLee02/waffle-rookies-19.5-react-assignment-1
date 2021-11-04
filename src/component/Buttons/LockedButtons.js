@@ -1,7 +1,7 @@
 import Lock from "../../Data/Locked.svg";
 import Delete from "../../Data/Delete.svg";
 import Save from "../../Data/Save.svg";
-import "./IDButtons.css";
+import "./IDButtons.module.scss";
 
 const LockedIDButtons = (props) => {
   return (

@@ -10,7 +10,7 @@ import StudentAddModal from "../../component/Modal/StudentAddModal/StudentAddMod
 import { useStudentContext } from "../../context/StudentsContext";
 import PopUp from "../../component/Modal/PopUp/PopUp";
 import { useHistory } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNetworkContext } from "../../context/NetworkContext";
@@ -21,7 +21,8 @@ const Students = () => {
   const networkContext = useNetworkContext();
   const [addModalOpen, setAddModalOpen] = useState(false); // 모달은 기본값이 꺼진 상태로
   const [popUpOpen, setPopUpOpen] = useState(); // 모달은 기본값이 꺼진 상태로
-  const [search, setSearch] = useState(""); //검색창 입력 값 받아옴
+  const [gradeSearch, setGradeSearch] = useState("");
+  const [nameSearch, setNameSearch] = useState("");
   const [nowStudentData, setNowStudentData] = useState({
     //현재 선택된 학생의 데이터, id 값만 임의로 부여해둠.
     id: null,
@@ -57,6 +58,7 @@ const Students = () => {
   };
 
   useEffect(() => {
+    //선택된 학생 데이터가 바뀌었을 때만 실행
     axios
       .get("/student")
       .then((response) => {
@@ -72,7 +74,7 @@ const Students = () => {
           setNowStudentData(response.data);
         })
         .catch((error) => {
-          toast(error.response.data.message);
+          toast.error(error.response.data.message);
         });
     }
   }, [studentContext.nowStudentID]);
@@ -81,6 +83,12 @@ const Students = () => {
     if (networkContext.token === undefined || networkContext.token === "null") {
       history.push("/login");
     }
+    axios.get("/auth/check_token").catch((error) => {
+      localStorage.setItem("JWT", null);
+      networkContext.setToken(undefined);
+      toast.error(error.response.data.message);
+      history.push("/login");
+    });
     if (getCookie("popUpPostpone") === "Y") {
       setPopUpOpen(false);
     } else {
@@ -101,15 +109,18 @@ const Students = () => {
       <div className={"Down"}>
         <div className={"Left"}>
           <ControlBar
-            search={search}
-            setSearch={setSearch}
-            openModal={openAddModal}
+            nameSearch={nameSearch}
+            setNameSearch={setNameSearch}
+            gradeSearch={gradeSearch}
+            setGradeSearch={setGradeSearch}
           />
           <Table
             setNowStudentData={setNowStudentData}
             nowStudentData={nowStudentData}
-            search={search}
           />
+          <button className={"AddButton"} onClick={openAddModal}>
+            추가
+          </button>
         </div>
         <div className={"Right"}>
           <Detail nowStudentData={nowStudentData} />

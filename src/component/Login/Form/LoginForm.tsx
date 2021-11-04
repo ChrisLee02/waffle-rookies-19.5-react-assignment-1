@@ -1,27 +1,35 @@
 import "./LoginForm.css";
-import { useHistory, Link } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { ChangeEventHandler, FormEventHandler, useState } from "react";
+import axios, {AxiosResponse} from "axios";
 import { toast } from "react-toastify";
 import { useNetworkContext } from "../../../context/NetworkContext";
 
+interface LoginForm {
+  username: string;
+  password: string;
+}
+
 const LoginForm = () => {
   const networkContext = useNetworkContext();
-  const [account, setAccount] = useState({
+
+  const [account, setAccount] = useState<LoginForm>({
     username: "",
     password: "",
   });
-  const onChangeAccount = (e) => {
+
+  const onChangeAccount: ChangeEventHandler<HTMLInputElement> = (e) => {
     setAccount({
       ...account,
-      [e.target.name]: e.target.value, // 귀찮으니까...
+      [e.target.name]: e.target.value,
     });
   };
+
   const history = useHistory();
   const onClick = () => {
     axios
-      .post("/auth/login", account)
-      .then((response) => {
+      .post<{success: boolean}>("/auth/login", account)
+      .then((response: AxiosResponse) => {
         localStorage.setItem("JWT", response.data.access_token);
         networkContext.setToken(response.data.access_token);
         history.push("/students");
@@ -30,9 +38,10 @@ const LoginForm = () => {
         toast.error(error.response.data.message);
       });
   };
+
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onClick();
       }}

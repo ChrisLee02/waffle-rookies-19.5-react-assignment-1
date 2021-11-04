@@ -1,4 +1,5 @@
 import "./ProfileInfo.css";
+import { toast } from "react-toastify";
 
 const ProfileInfo = (props) => {
   const emailCut = () => {
@@ -10,32 +11,36 @@ const ProfileInfo = (props) => {
   };
 
   const setPhoneNum = (e) => {
-    // 길이가 4, 9인 시점에서 지우는 중인지/쓰는 중인지로 2차 케이스를 나눔.
-    props.setNowStudentData({ ...props.nowStudentData, phone: e.target.value });
-    if (e.target.value.length === 4) {
-      if (e.target.value[3] === "-") {
-        props.setNowStudentData({
-          ...props.nowStudentData,
-          phone: e.target.value.slice(0, 3),
-        });
-      } else {
-        props.setNowStudentData({
-          ...props.nowStudentData,
-          phone: e.target.value.slice(0, 3) + "-" + e.target.value[3],
-        });
+    if (!/[^0-9-]/.test(e.target.value)) {
+      props.setNowStudentData({
+        ...props.nowStudentData,
+        phone: e.target.value,
+      });
+      if (e.target.value.length === 4) {
+        if (e.target.value[3] === "-") {
+          props.setNowStudentData({
+            ...props.nowStudentData,
+            phone: e.target.value.slice(0, 3),
+          });
+        } else {
+          props.setNowStudentData({
+            ...props.nowStudentData,
+            phone: e.target.value.slice(0, 3) + "-" + e.target.value[3],
+          });
+        }
       }
-    }
-    if (e.target.value.length === 9) {
-      if (e.target.value[8] === "-") {
-        props.setNowStudentData({
-          ...props.nowStudentData,
-          phone: e.target.value.slice(0, 8),
-        });
-      } else {
-        props.setNowStudentData({
-          ...props.nowStudentData,
-          phone: e.target.value.slice(0, 8) + "-" + e.target.value[8],
-        });
+      if (e.target.value.length === 9) {
+        if (e.target.value[8] === "-") {
+          props.setNowStudentData({
+            ...props.nowStudentData,
+            phone: e.target.value.slice(0, 8),
+          });
+        } else {
+          props.setNowStudentData({
+            ...props.nowStudentData,
+            phone: e.target.value.slice(0, 8) + "-" + e.target.value[8],
+          });
+        }
       }
     }
   };
@@ -63,10 +68,14 @@ const ProfileInfo = (props) => {
               id={"Email"}
               value={emailCut() || ""}
               onChange={(e) => {
-                props.setNowStudentData({
-                  ...props.nowStudentData,
-                  email: e.target.value + "@waffle.hs.kr",
-                });
+                if (/[@ ]/.test(e.target.value)) {
+                  toast.error("@와 공백은 입력하실 수 없습니다.");
+                } else {
+                  props.setNowStudentData({
+                    ...props.nowStudentData,
+                    email: e.target.value + "@waffle.hs.kr",
+                  });
+                }
               }}
             />
           </div>

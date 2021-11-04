@@ -6,8 +6,20 @@ import NoTableContents from "./NoTableContents/NoTableContents";
 
 const Table = (props) => {
   const context = useStudentContext();
+  const params = new URLSearchParams(document.location.search.substring(1));
   const TableContents = context.studentData
-    .filter((student) => student.name.includes(props.search))
+    .filter(
+      (student) =>
+        params.get("name") === "" ||
+        params.get("name") === null ||
+        student.name.includes(params.get("name"))
+    )
+    .filter(
+      (student) =>
+        params.get("grade") === "" ||
+        params.get("grade") === null ||
+        student.grade === Number(params.get("grade"))
+    )
     .map((student) => {
       return (
         <TableContent // 현재 학생의 테이블 내용
