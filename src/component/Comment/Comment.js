@@ -16,7 +16,7 @@ const Comment = (props) => {
       .then(() => {
         props.commentUpdate();
         setCommentMessage("");
-        ulRef.current.scrollTop = 0;
+        ulRef.current.scrollTo(0, 0);
       })
       .catch((error) => {
         toast.error(error.response.data.message);
@@ -36,7 +36,7 @@ const Comment = (props) => {
         1 &&
       props.page !== null
     ) {
-      props.commentPageUpdate(props.page);
+      props.commentpageupDate(props.page);
     }
   },300
 )

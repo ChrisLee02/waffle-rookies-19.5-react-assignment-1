@@ -74,7 +74,7 @@ const StudentID = () => {
         });*/
   };
 
-  const commentPageUpdate = (Page) => {
+  const commentpageupDate = (Page) => {
     axios
       .get("/student/" + id + "/comment?page=" + Page.toString())
       .then((response) => {
@@ -136,7 +136,7 @@ const StudentID = () => {
         history.push("/login");
       });
 
-    commentPageUpdate(1);
+    commentpageupDate(1);
   }, []);
 
   /*useEffect(() => {
@@ -146,7 +146,6 @@ const StudentID = () => {
   return (
     <div className={"StudentID"}>
       <StudentDeleteModal
-        history={history}
         closeModal={closeModal}
         modalOpen={modalOpen}
         nowStudentData={nowStudentData}
@@ -179,7 +178,7 @@ const StudentID = () => {
           <Comment
             setComments={setComments}
             commentUpdate={commentUpdate}
-            commentPageUpdate={commentPageUpdate}
+            commentpageupDate={commentpageupDate}
             comments={comments}
             setPage={setPage}
             page={page}

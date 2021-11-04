@@ -1,9 +1,11 @@
 import styles from "./ControlBar.module.css";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import {useLocation} from 'react-router-dom';
 
 const ControlBar = (props) => {
-  const params = new URLSearchParams(document.location.search.substring(1));
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
   const [gradeSearch, setGradeSearch] = useState(params.get("grade"));
   const [nameSearch, setNameSearch] = useState(params.get("name"));
   return (
@@ -31,7 +33,7 @@ const ControlBar = (props) => {
             }
           }}
           placeholder={"학년"}
-          type={"text"}
+          type={"number"}
           className={styles.InputSearch}
           name={"grade"}
         />

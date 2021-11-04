@@ -4,7 +4,13 @@ import { useStudentContext } from "../../../context/StudentsContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const StudentAddModal = (props: any) => {
+interface Props {
+  setNowStudentData: object;
+  closeModal: ()=>void;
+  modalOpen: boolean;
+}
+
+const StudentAddModal = (props: Props) => {
   const studentContext = useStudentContext();
   const open = props.modalOpen;
   const [name, setName] = useState<string>();

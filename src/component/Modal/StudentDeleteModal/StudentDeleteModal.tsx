@@ -7,13 +7,18 @@ import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-interface params {
+interface Params {
   id: string;
 }
+interface Props {
+  modalOpen: boolean;
+  closeModal: ()=>void;
+  nowStudentData: object;
+}
 
-const StudentDeleteModal = (props: any) => {
+const StudentDeleteModal = (props: Props) => {
   const open = props.modalOpen;
-  const params = useParams<params>();
+  const params = useParams<Params>();
   const id = params.id;
   const history = useHistory();
   const studentContext = useStudentContext();

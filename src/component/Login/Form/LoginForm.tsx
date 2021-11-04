@@ -1,7 +1,7 @@
 import "./LoginForm.css";
 import { useHistory } from "react-router-dom";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import { toast } from "react-toastify";
 import { useNetworkContext } from "../../../context/NetworkContext";
 
@@ -28,8 +28,8 @@ const LoginForm = () => {
   const history = useHistory();
   const onClick = () => {
     axios
-      .post("/auth/login", account)
-      .then((response) => {
+      .post<{success: boolean}>("/auth/login", account)
+      .then((response: AxiosResponse) => {
         localStorage.setItem("JWT", response.data.access_token);
         networkContext.setToken(response.data.access_token);
         history.push("/students");

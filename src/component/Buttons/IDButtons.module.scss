@@ -2,7 +2,7 @@ $grey: #c4c4c4;
 $pink: #fcd8d8;
 $green: #d3ffdd;
 
-.IdButton {
+@mixin IdButton() {
   width: 100px;
   height: 50px;
   border: none;
@@ -11,6 +11,10 @@ $green: #d3ffdd;
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-top: 10px;
+}
+
+.IdButton {
+  @include IdButton();
 }
 
 .LockedIdButton {
@@ -34,15 +38,15 @@ $green: #d3ffdd;
 }
 
 .Lock {
-  @extend .IdButton;
+  @include IdButton();
   background-color: $grey;
 }
 .Delete {
-  @extend .IdButton;
+  @include IdButton();
   background-color: $pink;
 }
 .Save {
-  @extend .IdButton;
+  @include IdButton();
   background-color: $green;
 }
 
