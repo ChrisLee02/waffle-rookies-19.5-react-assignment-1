@@ -2,6 +2,7 @@
   height: 500px;
   border: 1px #d3d3d3 solid;
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .CommentInput {
@@ -9,9 +10,12 @@
   width: 90%;
 }
 
-.CommentList {
-  height: 100%;
+#CommentList {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 16px 24px;
 }
 
 .CommentInputBox {
@@ -26,13 +30,21 @@
 .Comment {
   line-height: 40px;
   margin-right: 40px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  padding-inline: 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease 0s;
 }
+.Comment:hover {
+  background-color: rgb(238, 238, 238);
+}
+
 .NoComment {
   height: 500px;
   border: 1px #d3d3d3 solid;
-}
-#NoCommentText {
-  margin-top: 230px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

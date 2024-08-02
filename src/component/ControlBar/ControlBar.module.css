@@ -21,3 +21,16 @@ input {
   font-size: 14px;
   line-height: 18px;
 }
+
+.Search {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+}
+.InputSearchWrap {
+  display: flex;
+  gap: 10px;
+}
+.InputSearch {
+  width: 100px;
+}

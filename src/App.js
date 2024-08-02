@@ -1,6 +1,12 @@
 import Students from "./Page/Students/Students";
 import React, { useEffect } from "react";
-import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter,
+  Switch,
+  Redirect,
+  useHistory,
+} from "react-router-dom";
 import StudentID from "./Page/StudentID/StudentID";
 import Login from "./Page/Login/Login";
 import axios from "axios";
@@ -12,18 +18,28 @@ import { useNetworkContext } from "./context/NetworkContext";
 function App() {
   const studentContext = useStudentContext();
   const networkContext = useNetworkContext();
+  const history = useHistory();
   axios.defaults.baseURL =
-    "https://p04fpgjlo3.execute-api.ap-northeast-2.amazonaws.com/v1";
+    "https://g5imzjo8qf.execute-api.ap-northeast-2.amazonaws.com/v1";
   axios.defaults.headers["Authorization"] = "Bearer " + networkContext.token;
 
   useEffect(() => {
     if (networkContext.token !== undefined && networkContext.token !== "null") {
       axios
-        .get("/student")
+        .get("/auth/check_token")
         .then((response) => {
-          studentContext.setStudentData(response.data);
+          axios
+            .get("/student")
+            .then((response) => {
+              studentContext.setStudentData(response.data);
+            })
+            .catch((error) => {
+              toast.error(error.response.data.message);
+            });
         })
         .catch((error) => {
+          localStorage.setItem("JWT", null);
+          networkContext.setToken(undefined);
           toast.error(error.response.data.message);
         });
     }

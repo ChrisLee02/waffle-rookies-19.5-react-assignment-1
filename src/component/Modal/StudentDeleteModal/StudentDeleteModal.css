@@ -8,7 +8,19 @@
   background-color: #f4f4f4;
   border: 1px solid #c2c2c2;
 }
-
+.IdButton {
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 42px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 10px;
+}
+.Delete {
+  background-color: #fcd8d8;
+}
 .modal {
   display: none;
   position: fixed;
